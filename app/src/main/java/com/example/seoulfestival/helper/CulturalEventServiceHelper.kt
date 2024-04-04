@@ -12,6 +12,7 @@ import retrofit2.Response
 
 
 
+/*
 class CulturalEventServiceHelper(private val context: Context) {
     fun fetchCulturalEvents() {
         val service = RetrofitClient.instance.create(CulturalEventService::class.java)
@@ -36,3 +37,4 @@ class CulturalEventServiceHelper(private val context: Context) {
 
     }
 }
+*/
