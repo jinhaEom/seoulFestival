@@ -19,23 +19,26 @@ class CulturalEventsViewModel(private val context: Context) : ViewModel() {
         fetchCulturalEvents()
     }
 
-    private fun fetchCulturalEvents() {
+    fun fetchCulturalEvents() {
         viewModelScope.launch {
             try {
                 val service = RetrofitClient.instance.create(CulturalEventService::class.java)
-                // suspend 함수를 호출하여 직접 응답 객체를 받습니다.
                 val response = service.getCulturalEvents(
                     apiKey = BuildConfig.SEOUL_FESTIVAL_API_KEY,
                     type = "json",
                     service = "culturalEventInfo",
                     startIndex = 1,
-                    endIndex = 5
+                    endIndex = 100
                 )
-                _events.postValue(response.culturalEventInfo?.row)
+                val events = response.culturalEventInfo?.row
+                events?.let {
+
+                    val selectedEvents = if (it.size > 4) it.shuffled().take(4) else it
+                    _events.postValue(selectedEvents)
+                }
             } catch (e: Exception) {
-                // 네트워크 요청 실패, JSON 파싱 오류 등을 포함한 예외 처리
+                // 오류 처리
             }
         }
     }
-
 }

@@ -34,6 +34,7 @@ data class Event(
     @SerializedName("DATE")
     val date: String?,
     @SerializedName("PLACE")
-    val place: String?
-    // 필드 추가해야함
+    val place: String?,
+    @SerializedName("MAIN_IMG")
+    val img : String?
 )

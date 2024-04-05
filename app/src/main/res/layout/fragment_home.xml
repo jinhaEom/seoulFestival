@@ -12,56 +12,42 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/white"/>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView1"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/searchEditTextView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/homeToolbar"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="180dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="12dp">
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/background_white_stroke_light_gray">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/testText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textColor="@color/black"
-                    android:text="지역으로 찾기"/>
-            </FrameLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView2"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/cardView1"
-            app:layout_constraintBottom_toBottomOf="@id/cardView1"
-            app:cardBackgroundColor="@color/white"
-            android:layout_marginEnd="40dp"
-            app:cardCornerRadius="12dp">
+            app:layout_constraintTop_toBottomOf="@id/homeToolbar"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="24dp"
+            android:hint="서울 어디로 가고싶으신가요?"
+            android:paddingStart="12dp"
+            android:background="@drawable/background_white_stroke_light_gray"
+            android:drawableEnd="@drawable/ic_right"/>
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/background_white_stroke_light_gray">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/recommendTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="오늘의 추천 장소"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:fontFamily="@font/maruburibold"
+            app:layout_constraintTop_toBottomOf="@id/searchEditTextView"
+            app:layout_constraintStart_toStartOf="@id/searchEditTextView"
+            android:layout_marginTop="24dp"
+            android:textSize="24dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recommendRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/recommendTv"/>
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textColor="@color/black"
-                    android:text="다가오는 이벤트"/>
-            </FrameLayout>
-        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
