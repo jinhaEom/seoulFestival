@@ -25,7 +25,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         viewModel = ViewModelProvider(this, CulturalEventsViewModelFactory(requireContext())).get(CulturalEventsViewModel::class.java)
         val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        val recyclerView = viewDataBinding.root.findViewById<RecyclerView>(R.id.recommendRecyclerView) // XML에서 RecyclerView의 ID를 설정하세요.
+        val recyclerView = viewDataBinding.root.findViewById<RecyclerView>(R.id.recommendRecyclerView)
         recyclerView.layoutManager = layoutManager
 
         viewModel.fetchCulturalEvents()

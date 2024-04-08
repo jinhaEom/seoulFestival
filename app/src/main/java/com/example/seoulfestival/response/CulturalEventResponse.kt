@@ -36,5 +36,7 @@ data class Event(
     @SerializedName("PLACE")
     val place: String?,
     @SerializedName("MAIN_IMG")
-    val img : String?
+    val img : String?,
+    @SerializedName("HMPG_ADDR") //홈페이지 주소
+    val addr : String?
 )

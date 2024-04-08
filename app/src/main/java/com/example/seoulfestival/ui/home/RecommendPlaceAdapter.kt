@@ -1,6 +1,8 @@
 package com.example.seoulfestival.ui.home
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +38,15 @@ class RecommendPlaceAdapter(private val context: Context, private val events: Li
             Glide.with(context)
                 .load(event.img)
                 .into(placeImageView) // 이미지 로딩에 Glide 사용
+            placeImageView.setOnClickListener {
+                val url = event.addr
+                if (url != null && url.isNotEmpty()) {
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.data = Uri.parse(url)
+                    context.startActivity(intent)
+                }
+            }
         }
+
     }
 }

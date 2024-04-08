@@ -13,9 +13,9 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:shapeAppearanceOverlay="@style/RoundedImageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/RoundedImageView"
         tools:src="@drawable/bubble">
 
     </com.google.android.material.imageview.ShapeableImageView>
@@ -25,7 +25,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toStartOf="@id/placeTx"
         app:layout_constraintStart_toStartOf="@+id/placeImageView"
         app:layout_constraintTop_toBottomOf="@+id/placeImageView"
         tools:text="서울시 종로구" />
@@ -42,13 +41,15 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/placeTx"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:text="세종문화회관"
-        android:textColor="@color/middle_gray"
         android:layout_marginStart="4dp"
+        android:textColor="@color/middle_gray"
+        app:layout_constraintEnd_toEndOf="@+id/placeImageView"
         app:layout_constraintStart_toEndOf="@id/devideView"
-        app:layout_constraintTop_toTopOf="@id/locationTx"/>
+        app:layout_constraintTop_toTopOf="@id/locationTx"
+        android:maxLines="1"
+        tools:text="세종문화회관" />
     <View
         android:id="@+id/devideView2"
         app:layout_constraintTop_toBottomOf="@id/locationTx"
@@ -62,11 +63,13 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/festivalName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/devideView2"
+        android:maxLines="2"
+        app:layout_constraintEnd_toEndOf="@+id/placeImageView"
         app:layout_constraintStart_toStartOf="@id/locationTx"
+        app:layout_constraintTop_toBottomOf="@id/devideView2"
         tools:text="anasdf" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
