@@ -3,7 +3,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:overScrollMode="always">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -61,111 +62,289 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/recommendRecyclerView">
 
-                <androidx.appcompat.widget.AppCompatImageView
+                <androidx.cardview.widget.CardView
                     android:id="@+id/operaMenu"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="24dp"
-                    android:src="@drawable/opera"
+                    android:backgroundTint="@color/white"
+                    app:cardElevation="0dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/operaTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="오페라"
-                    android:textColor="@color/black"
-                    android:paddingTop="4dp"
-                    android:textSize="12dp"
-                    app:layout_constraintEnd_toEndOf="@id/operaMenu"
-                    app:layout_constraintStart_toStartOf="@id/operaMenu"
-                    app:layout_constraintTop_toBottomOf="@id/operaMenu" />
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/background_white_stroke_light_gray" />
 
-                <androidx.appcompat.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="8dp"
+                        android:src="@drawable/opera" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+                        android:fontFamily="@font/gamtanregular"
+                        android:padding="12dp"
+                        android:text="오페라"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:id="@+id/musicalMenu"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
                     android:layout_marginStart="24dp"
-                    android:src="@drawable/musical"
+                    android:layout_marginTop="24dp"
+                    android:backgroundTint="@color/white"
+                    app:cardElevation="0dp"
                     app:layout_constraintEnd_toStartOf="@id/classicMenu"
                     app:layout_constraintStart_toEndOf="@id/operaMenu"
-                    app:layout_constraintTop_toTopOf="@id/operaMenu" />
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/musicalTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="뮤지컬"
-                    android:textColor="@color/black"
-                    android:textSize="12dp"
-                    android:paddingTop="4dp"
-                    app:layout_constraintEnd_toEndOf="@id/musicalMenu"
-                    app:layout_constraintStart_toStartOf="@id/musicalMenu"
-                    app:layout_constraintTop_toBottomOf="@id/musicalMenu" />
-                <androidx.appcompat.widget.AppCompatImageView
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/background_white_stroke_light_gray" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="8dp"
+                        android:src="@drawable/musical" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+                        android:fontFamily="@font/gamtanregular"
+                        android:padding="12dp"
+                        android:text="뮤지컬"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:id="@+id/classicMenu"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
                     android:layout_marginStart="24dp"
-                    android:src="@drawable/classic"
-                    app:layout_constraintEnd_toStartOf="@id/koreanClassicMenu"
-                    app:layout_constraintStart_toEndOf="@id/musicalMenu"
-                    app:layout_constraintTop_toTopOf="@id/operaMenu" />
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/classicTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="클래식"
-                    android:paddingTop="4dp"
-                    android:textColor="@color/black"
-                    android:textSize="12dp"
-                    android:paddingStart="10dp"
-                    app:layout_constraintEnd_toEndOf="@id/classicMenu"
-                    app:layout_constraintStart_toStartOf="@id/classicMenu"
-                    app:layout_constraintTop_toBottomOf="@id/classicMenu" />
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/koreanClassicMenu"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:src="@drawable/janggu"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/classicMenu"
-                    app:layout_constraintTop_toTopOf="@id/operaMenu" />
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/koreanClassicTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="국악"
-                    android:textColor="@color/black"
-                    android:textSize="12dp"
-                    android:paddingTop="4dp"
-                    app:layout_constraintEnd_toEndOf="@id/koreanClassicMenu"
-                    app:layout_constraintStart_toStartOf="@id/koreanClassicMenu"
-                    app:layout_constraintTop_toBottomOf="@id/koreanClassicMenu" />
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/dramaMenu"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
                     android:layout_marginTop="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:src="@drawable/drama"
-                    android:paddingTop="4dp"
-                    app:layout_constraintStart_toStartOf="@id/operaMenu"
-                    app:layout_constraintTop_toBottomOf="@id/operaTv" />
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/dramaTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="클래식"
-                    android:textColor="@color/black"
-                    android:textSize="12dp"
-                    android:paddingTop="4dp"
-                    app:layout_constraintEnd_toEndOf="@id/dramaMenu"
-                    app:layout_constraintStart_toStartOf="@id/dramaMenu"
-                    app:layout_constraintTop_toBottomOf="@id/dramaMenu" />
+                    android:backgroundTint="@color/white"
+                    app:cardElevation="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/musicalMenu"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/background_white_stroke_light_gray" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="8dp"
+                        android:src="@drawable/classic" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+                        android:fontFamily="@font/gamtanregular"
+                        android:padding="12dp"
+                        android:text="클래식"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/koreanClassicMenu"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="24dp"
+                    android:backgroundTint="@color/white"
+                    app:cardElevation="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/operaMenu">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/background_white_stroke_light_gray" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="8dp"
+                        android:src="@drawable/janggu" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+                        android:fontFamily="@font/gamtanregular"
+                        android:padding="12dp"
+                        android:text="국악"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/dramaMenu"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_marginTop="24dp"
+                    android:backgroundTint="@color/white"
+                    app:cardElevation="0dp"
+                    app:layout_constraintBottom_toBottomOf="@id/koreanClassicMenu"
+                    app:layout_constraintStart_toStartOf="@id/musicalMenu"
+                    app:layout_constraintTop_toBottomOf="@id/operaMenu">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/background_white_stroke_light_gray" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="8dp"
+                        android:src="@drawable/drama" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+                        android:fontFamily="@font/gamtanregular"
+                        android:padding="12dp"
+                        android:text="연극"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </androidx.cardview.widget.CardView>
+                <!--                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/operaMenu"
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:layout_marginStart="24dp"
+                                    android:layout_marginTop="24dp"
+                                    android:src="@drawable/opera"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/operaTv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="오페라"
+                                    android:textColor="@color/black"
+                                    android:paddingTop="4dp"
+                                    android:textSize="12dp"
+                                    app:layout_constraintEnd_toEndOf="@id/operaMenu"
+                                    app:layout_constraintStart_toStartOf="@id/operaMenu"
+                                    app:layout_constraintTop_toBottomOf="@id/operaMenu" />
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/musicalMenu"
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:layout_marginStart="24dp"
+                                    android:src="@drawable/musical"
+                                    app:layout_constraintEnd_toStartOf="@id/classicMenu"
+                                    app:layout_constraintStart_toEndOf="@id/operaMenu"
+                                    app:layout_constraintTop_toTopOf="@id/operaMenu" />
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/musicalTv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="뮤지컬"
+                                    android:textColor="@color/black"
+                                    android:textSize="12dp"
+                                    android:paddingTop="4dp"
+                                    app:layout_constraintEnd_toEndOf="@id/musicalMenu"
+                                    app:layout_constraintStart_toStartOf="@id/musicalMenu"
+                                    app:layout_constraintTop_toBottomOf="@id/musicalMenu" />
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/classicMenu"
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:layout_marginStart="24dp"
+                                    android:src="@drawable/classic"
+                                    app:layout_constraintEnd_toStartOf="@id/koreanClassicMenu"
+                                    app:layout_constraintStart_toEndOf="@id/musicalMenu"
+                                    app:layout_constraintTop_toTopOf="@id/operaMenu" />
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/classicTv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="클래식"
+                                    android:paddingTop="4dp"
+                                    android:textColor="@color/black"
+                                    android:textSize="12dp"
+                                    android:paddingStart="10dp"
+                                    app:layout_constraintEnd_toEndOf="@id/classicMenu"
+                                    app:layout_constraintStart_toStartOf="@id/classicMenu"
+                                    app:layout_constraintTop_toBottomOf="@id/classicMenu" />
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/koreanClassicMenu"
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:layout_marginStart="24dp"
+                                    android:layout_marginEnd="24dp"
+                                    android:src="@drawable/janggu"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toEndOf="@id/classicMenu"
+                                    app:layout_constraintTop_toTopOf="@id/operaMenu" />
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/koreanClassicTv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="국악"
+                                    android:textColor="@color/black"
+                                    android:textSize="12dp"
+                                    android:paddingTop="4dp"
+                                    app:layout_constraintEnd_toEndOf="@id/koreanClassicMenu"
+                                    app:layout_constraintStart_toStartOf="@id/koreanClassicMenu"
+                                    app:layout_constraintTop_toBottomOf="@id/koreanClassicMenu" />
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/dramaMenu"
+                                    android:layout_width="64dp"
+                                    android:layout_height="64dp"
+                                    android:layout_marginTop="24dp"
+                                    android:layout_marginEnd="24dp"
+                                    android:src="@drawable/drama"
+                                    android:paddingTop="4dp"
+                                    app:layout_constraintStart_toStartOf="@id/operaMenu"
+                                    app:layout_constraintTop_toBottomOf="@id/operaTv" />
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/dramaTv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="클래식"
+                                    android:textColor="@color/black"
+                                    android:textSize="12dp"
+                                    android:paddingTop="4dp"
+                                    app:layout_constraintEnd_toEndOf="@id/dramaMenu"
+                                    app:layout_constraintStart_toStartOf="@id/dramaMenu"
+                                    app:layout_constraintTop_toBottomOf="@id/dramaMenu" />-->
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
