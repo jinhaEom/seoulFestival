@@ -3,6 +3,7 @@ package com.example.seoulfestival.ui.home
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,8 @@ class RecommendPlaceAdapter(private val context: Context, private val events: Li
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val event = events[position]
         holder.bind(event)
+        Log.d("RecommendPlaceAdapter", "Binding view holder for position $position: $event")
+
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

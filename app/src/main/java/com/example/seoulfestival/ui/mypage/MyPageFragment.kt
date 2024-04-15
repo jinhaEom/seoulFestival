@@ -1,4 +1,4 @@
-package com.example.seoulfestival.ui.home.mypage
+package com.example.seoulfestival.ui.mypage
 
 import com.example.seoulfestival.R
 import com.example.seoulfestival.base.BaseFragment

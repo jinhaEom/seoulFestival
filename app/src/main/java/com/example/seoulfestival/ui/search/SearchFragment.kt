@@ -1,4 +1,4 @@
-package com.example.seoulfestival.ui.home.search
+package com.example.seoulfestival.ui.search
 
 import com.example.seoulfestival.R
 import com.example.seoulfestival.base.BaseFragment

@@ -1,13 +1,13 @@
 package com.example.seoulfestival.ui.home
 
-import android.util.Log
 import android.view.View
-import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.seoulfestival.R
+import com.example.seoulfestival.Util.getNavOptions
 import com.example.seoulfestival.base.BaseFragment
 import com.example.seoulfestival.databinding.FragmentHomeBinding
 import com.example.seoulfestival.viewModel.CulturalEventsViewModelFactory
@@ -29,6 +29,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         recyclerView.layoutManager = layoutManager
 
         viewModel.fetchCulturalEvents()
+
+        viewDataBinding.operaMenu.setOnClickListener {
+            findNavController().navigate(
+                HomeFragmentDirections.actionOperaFragment(),
+                getNavOptions
+            )
+        }
 
     }
 
