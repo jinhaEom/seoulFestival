@@ -25,6 +25,7 @@
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/gamtanregular"
                 android:text="오늘의 추천 장소"
+                android:layout_marginStart="24dp"
                 android:textColor="@color/black"
                 android:textSize="24dp"
                 android:textStyle="bold"

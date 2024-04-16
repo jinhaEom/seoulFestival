@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.seoulfestival.R
 import com.example.seoulfestival.base.BaseFragment
@@ -20,14 +21,29 @@ class OperaFragment : BaseFragment<FragmentOperaBinding>() {
         viewDataBinding.lifecycleOwner = this
 
         viewModel = ViewModelProvider(this, CulturalEventsViewModelFactory(requireContext())).get(CulturalEventsViewModel::class.java)
+        viewDataBinding.apply {
+            val vt = operaToolbar
+            vt.toolbarTitle.text = getString(R.string.opera)
+            vt.toolbarBack.visibility = View.VISIBLE
 
-        val layoutManager = LinearLayoutManager(requireContext())
-        viewDataBinding.operaRecyclerView.apply {
-            this.layoutManager = layoutManager
-            adapter = EventAdapter(requireContext(), emptyList())
+            val layoutManager = LinearLayoutManager(requireContext())
+            operaRecyclerView.apply {
+                this.layoutManager = layoutManager
+                adapter = EventAdapter(requireContext(), emptyList())
+            }
+            vt.toolbarBack.setOnClickListener{
+                findNavController().navigateUp()
+            }
+
+
+
+            viewModel.fetchAllCulturalEvents()
         }
 
-        viewModel.fetchCulturalEvents()
+
+
+
+
     }
 
     override fun observeData() {

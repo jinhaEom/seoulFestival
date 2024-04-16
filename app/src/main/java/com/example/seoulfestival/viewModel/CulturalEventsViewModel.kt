@@ -41,4 +41,24 @@ class CulturalEventsViewModel(private val context: Context) : ViewModel() {
             }
         }
     }
+    fun fetchAllCulturalEvents() {
+        viewModelScope.launch {
+            try {
+                val service = RetrofitClient.instance.create(CulturalEventService::class.java)
+                val response = service.getCulturalEvents(
+                    apiKey = BuildConfig.SEOUL_FESTIVAL_API_KEY,
+                    type = "json",
+                    service = "culturalEventInfo",
+                    startIndex = 1,
+                    endIndex = 300
+                )
+                val events = response.culturalEventInfo?.row
+                events?.let {
+                    _events.postValue(it)
+                }
+            } catch (e: Exception) {
+                // 오류 처리
+            }
+        }
+    }
 }
