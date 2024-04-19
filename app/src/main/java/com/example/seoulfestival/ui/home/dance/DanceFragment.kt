@@ -1,4 +1,4 @@
-package com.example.seoulfestival.ui.home.opera
+package com.example.seoulfestival.ui.home.dance
 
 import android.os.Bundle
 import android.view.View
@@ -8,29 +8,31 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.seoulfestival.R
 import com.example.seoulfestival.base.BaseFragment
+import com.example.seoulfestival.databinding.FragmentDanceBinding
 import com.example.seoulfestival.databinding.FragmentOperaBinding
 import com.example.seoulfestival.ui.EventAdapter
-import com.example.seoulfestival.viewmodel.CulturalEventsViewModel
 import com.example.seoulfestival.viewModel.CulturalEventsViewModelFactory
+import com.example.seoulfestival.viewmodel.CulturalEventsViewModel
 
-class OperaFragment : BaseFragment<FragmentOperaBinding>() {
-    override val layoutResourceId: Int = R.layout.fragment_opera
+class DanceFragment : BaseFragment<FragmentDanceBinding>() {
+    override val layoutResourceId: Int = R.layout.fragment_dance
     private lateinit var viewModel: CulturalEventsViewModel
 
     override fun aboutBinding() {
         viewDataBinding.lifecycleOwner = this
 
-        viewModel = ViewModelProvider(this, CulturalEventsViewModelFactory(requireContext())).get(CulturalEventsViewModel::class.java)
+        viewModel = ViewModelProvider(this, CulturalEventsViewModelFactory(requireContext())).get(
+            CulturalEventsViewModel::class.java)
         viewDataBinding.apply {
-            operaToolbar.toolbarTitle.text = getString(R.string.opera)
-            operaToolbar.toolbarBack.visibility = View.VISIBLE
+            danceToolbar.toolbarTitle.text = getString(R.string.dance)
+            danceToolbar.toolbarBack.visibility = View.VISIBLE
 
             val layoutManager = LinearLayoutManager(requireContext())
-            operaRecyclerView.apply {
+            danceRecyclerView.apply {
                 this.layoutManager = layoutManager
-                adapter = EventAdapter(requireContext(), emptyList(),"뮤지컬/오페라")
+                adapter = EventAdapter(requireContext(), emptyList(),"무용")
             }
-            operaToolbar.toolbarBack.setOnClickListener{
+            danceToolbar.toolbarBack.setOnClickListener{
                 findNavController().navigateUp()
             }
 
@@ -48,8 +50,9 @@ class OperaFragment : BaseFragment<FragmentOperaBinding>() {
     override fun observeData() {
         viewModel.events.observe(viewLifecycleOwner, Observer { events ->
             events?.let {
-                (viewDataBinding.operaRecyclerView.adapter as EventAdapter).updateData(it)
+                (viewDataBinding.danceRecyclerView.adapter as EventAdapter).updateData(it)
             }
         })
     }
+
 }

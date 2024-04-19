@@ -29,13 +29,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         recyclerView.layoutManager = layoutManager
 
         viewModel.fetchCulturalEvents()
-
-        viewDataBinding.operaMenu.setOnClickListener {
-            findNavController().navigate(
-                HomeFragmentDirections.actionOperaFragment(),
-                getNavOptions
-            )
+        viewDataBinding.apply{
+            operaMenu.setOnClickListener {
+                findNavController().navigate(
+                    HomeFragmentDirections.actionOperaFragment(),
+                    getNavOptions
+                )
+            }
+            danceMenu.setOnClickListener {
+                findNavController().navigate(
+                    HomeFragmentDirections.actionDanceFragment(),
+                    getNavOptions
+                )
+            }
         }
+
+
 
     }
 

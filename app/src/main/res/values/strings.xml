@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">seoulFestival</string>
     <string name="opera">오페라/연극</string>
+    <string name="dance">무용</string>
 </resources>

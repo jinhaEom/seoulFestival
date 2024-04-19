@@ -11,24 +11,33 @@
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/actionOperaFragment"
-            app:destination="@+id/operaFragment"/>
+            app:destination="@+id/operaFragment" />
+        <action
+            android:id="@+id/actionDanceFragment"
+            app:destination="@+id/danceFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.seoulfestival.ui.search.SearchFragment"
         android:label="SearchFragment"
-        tools:layout="@layout/fragment_search"/>
+        tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/mypageFragment"
         android:name="com.example.seoulfestival.ui.mypage.MyPageFragment"
         android:label="MyPage"
-        tools:layout="@layout/fragment_mypage"/>
+        tools:layout="@layout/fragment_mypage" />
 
-<fragment
-    android:id="@+id/operaFragment"
-    android:name="com.example.seoulfestival.ui.home.opera.OperaFragment"
-    android:label="operaFragment"
-    tools:layout="@layout/fragment_opera"/>
+    <fragment
+        android:id="@+id/operaFragment"
+        android:name="com.example.seoulfestival.ui.home.opera.OperaFragment"
+        android:label="operaFragment"
+        tools:layout="@layout/fragment_opera" />
+
+    <fragment
+        android:id="@+id/danceFragment"
+        android:name="com.example.seoulfestival.ui.home.dance.DanceFragment"
+        android:label="danceFragment"
+        tools:layout="@layout/fragment_dance" />
 
 </navigation>

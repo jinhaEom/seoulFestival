@@ -13,11 +13,12 @@ import com.example.seoulfestival.response.Event
 
 class EventAdapter(
     private val context: Context,
-    private var events: List<Event>
+    private var events: List<Event>,
+    private val eventType: String  // 이벤트 유형을 지정하는 매개변수 추가
 ) : RecyclerView.Adapter<EventAdapter.ViewHolder>() {
 
-    // 필터링된 리스트
-    private var filteredEvents = events.filter { it.codename == "뮤지컬/오페라" }
+    // 초기 필터링된 리스트
+    private var filteredEvents = events.filter { it.codename == eventType }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_play_list, parent, false)
@@ -42,10 +43,11 @@ class EventAdapter(
         }
     }
 
-    // 데이터 업데이트 함수
+    // 데이터 업데이트 및 필터링
     fun updateData(newEvents: List<Event>) {
         events = newEvents
-        filteredEvents = events.filter { it.codename == "뮤지컬/오페라" }
+        filteredEvents = events.filter { it.codename == eventType }
         notifyDataSetChanged()
     }
 }
+
