@@ -8,7 +8,7 @@
 
 
         <include
-            android:id="@+id/danceToolbar"
+            android:id="@+id/playToolbar"
             layout="@layout/toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
@@ -22,11 +22,11 @@
             android:layout_height="match_parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/danceRecyclerView"
+            android:id="@+id/playRecyclerView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
-            app:layout_constraintTop_toBottomOf="@+id/danceToolbar"
+            app:layout_constraintTop_toBottomOf="@+id/playToolbar"
             android:layout_height="0dp" />
 
 

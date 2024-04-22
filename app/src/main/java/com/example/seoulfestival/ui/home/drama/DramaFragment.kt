@@ -1,6 +1,5 @@
-package com.example.seoulfestival.ui.home.opera
+package com.example.seoulfestival.ui.home.drama
 
-import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -10,25 +9,26 @@ import com.example.seoulfestival.R
 import com.example.seoulfestival.base.BaseFragment
 import com.example.seoulfestival.databinding.FragmentPlayBinding
 import com.example.seoulfestival.ui.EventAdapter
-import com.example.seoulfestival.viewmodel.CulturalEventsViewModel
 import com.example.seoulfestival.viewModel.CulturalEventsViewModelFactory
+import com.example.seoulfestival.viewmodel.CulturalEventsViewModel
 
-class OperaFragment : BaseFragment<FragmentPlayBinding>() {
+class DramaFragment  : BaseFragment<FragmentPlayBinding>() {
     override val layoutResourceId: Int = R.layout.fragment_play
     private lateinit var viewModel: CulturalEventsViewModel
 
     override fun aboutBinding() {
         viewDataBinding.lifecycleOwner = this
 
-        viewModel = ViewModelProvider(this, CulturalEventsViewModelFactory(requireContext())).get(CulturalEventsViewModel::class.java)
+        viewModel = ViewModelProvider(this, CulturalEventsViewModelFactory(requireContext())).get(
+            CulturalEventsViewModel::class.java)
         viewDataBinding.apply {
-            playToolbar.toolbarTitle.text = getString(R.string.opera)
+            playToolbar.toolbarTitle.text = getString(R.string.drama)
             playToolbar.toolbarBack.visibility = View.VISIBLE
 
             val layoutManager = LinearLayoutManager(requireContext())
             playRecyclerView.apply {
                 this.layoutManager = layoutManager
-                adapter = EventAdapter(requireContext(), emptyList(),"뮤지컬/오페라")
+                adapter = EventAdapter(requireContext(), emptyList(),"연극")
             }
             playToolbar.toolbarBack.setOnClickListener{
                 findNavController().navigateUp()

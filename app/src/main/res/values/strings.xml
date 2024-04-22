@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">seoulFestival</string>
-    <string name="opera">오페라/연극</string>
+    <string name="opera">오페라</string>
     <string name="dance">무용</string>
+    <string name="classic">클래식</string>
+    <string name="gukak">국악</string>
+    <string name="drama">연극</string>
 </resources>

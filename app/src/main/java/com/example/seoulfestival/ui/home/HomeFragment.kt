@@ -3,6 +3,7 @@ package com.example.seoulfestival.ui.home
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,25 +30,23 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         recyclerView.layoutManager = layoutManager
 
         viewModel.fetchCulturalEvents()
-        viewDataBinding.apply{
-            operaMenu.setOnClickListener {
-                findNavController().navigate(
-                    HomeFragmentDirections.actionOperaFragment(),
-                    getNavOptions
-                )
-            }
-            danceMenu.setOnClickListener {
-                findNavController().navigate(
-                    HomeFragmentDirections.actionDanceFragment(),
-                    getNavOptions
-                )
-            }
-        }
 
-
-
+        mainMenuClick()
     }
-
+    private fun mainMenuClick(){
+        viewDataBinding.apply {
+            setupMenuClickListener(operaMenu, HomeFragmentDirections.actionOperaFragment())
+            setupMenuClickListener(danceMenu, HomeFragmentDirections.actionDanceFragment())
+            setupMenuClickListener(classicMenu, HomeFragmentDirections.actionClassicFragment())
+            setupMenuClickListener(gukakMenu, HomeFragmentDirections.actionGukakFragment())
+            setupMenuClickListener(dramaMenu, HomeFragmentDirections.actionDramaFragment())
+        }
+    }
+    private fun setupMenuClickListener(menuItem: View, navDirections: NavDirections) {
+        menuItem.setOnClickListener {
+            findNavController().navigate(navDirections, getNavOptions)
+        }
+    }
     override fun observeData() {
         viewModel.events.observe(viewLifecycleOwner, Observer { events ->
             events?.let {

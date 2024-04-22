@@ -15,6 +15,15 @@
         <action
             android:id="@+id/actionDanceFragment"
             app:destination="@+id/danceFragment" />
+        <action
+            android:id="@+id/actionClassicFragment"
+            app:destination="@+id/classicFragment"/>
+        <action
+            android:id="@+id/actionGukakFragment"
+            app:destination="@id/gukakFragment"/>
+        <action
+            android:id="@+id/actionDramaFragment"
+            app:destination="@id/dramaFragment"/>
     </fragment>
 
     <fragment
@@ -32,12 +41,30 @@
         android:id="@+id/operaFragment"
         android:name="com.example.seoulfestival.ui.home.opera.OperaFragment"
         android:label="operaFragment"
-        tools:layout="@layout/fragment_opera" />
+        tools:layout="@layout/fragment_play"
+        />
 
     <fragment
         android:id="@+id/danceFragment"
         android:name="com.example.seoulfestival.ui.home.dance.DanceFragment"
         android:label="danceFragment"
-        tools:layout="@layout/fragment_dance" />
+        tools:layout="@layout/fragment_play" />
+
+    <fragment
+        android:id="@+id/classicFragment"
+        android:name="com.example.seoulfestival.ui.home.classic.ClassicFragment"
+        android:label="classicFragment"
+        tools:layout="@layout/fragment_play"
+        />
+    <fragment
+        android:id="@+id/gukakFragment"
+        android:name="com.example.seoulfestival.ui.home.gukak.GukakFragment"
+        android:label="gukakFragment"
+        tools:layout="@layout/fragment_play"/>
+    <fragment
+        android:id="@+id/dramaFragment"
+        android:name="com.example.seoulfestival.ui.home.drama.DramaFragment"
+        android:label="dramaFragment"
+        tools:layout="@layout/fragment_play"/>
 
 </navigation>
