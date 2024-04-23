@@ -5,4 +5,5 @@
     <string name="classic">클래식</string>
     <string name="gukak">국악</string>
     <string name="drama">연극</string>
+    <string name="mapSearch">위치검색</string>
 </resources>

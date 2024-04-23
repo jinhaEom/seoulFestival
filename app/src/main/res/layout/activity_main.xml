@@ -37,8 +37,8 @@
             android:elevation="2dp"
             app:backgroundTint="@color/white"
             app:itemIconSize="22dp"
+            app:itemTextColor="@color/black"
             app:itemIconTint="@color/black"
-            app:itemRippleColor="@android:color/transparent"
             app:labelVisibilityMode="labeled"
             app:menu="@menu/navi_menu" />
 
