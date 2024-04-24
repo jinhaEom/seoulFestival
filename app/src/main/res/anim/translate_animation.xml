@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <objectAnimator
+        android:propertyName="scrollX"
+        android:valueType="intType"
+        android:valueFrom="0"
+        android:valueTo="-@dimen/image_width"
+    android:duration="3000"
+    android:interpolator="@android:anim/linear_interpolator"/>
+</set>

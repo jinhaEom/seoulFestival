@@ -4,5 +4,8 @@
 
     </style>
 
-    <style name="Theme.SeoulFestival" parent="Base.Theme.SeoulFestival" />
+    <style name="Theme.SeoulFestival" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor" >@color/white</item>
+        <item name="android:windowLightStatusBar" >true</item>
+    </style>
 </resources>
