@@ -21,7 +21,7 @@ android {
         Properties properties = new Properties()
         properties.load(project.rootProject.file("local.properties").newDataInputStream())
         buildConfigField "String", "SEOUL_FESTIVAL_API_KEY", "\"${properties.getProperty("SEOUL_FESTIVAL_API_KEY")}\""
-        resValue "string", "GOOGLE_MAPS_KEY", (project.findProperty("GOOGLE_MAPS_KEY") ?: "NoKey")
+        resValue "string", "MAPS_API_KEY", (project.findProperty("MAPS_API_KEY") ?: "NoKey")
 
     }
     buildFeatures {
@@ -77,8 +77,8 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.7.5")
     implementation "androidx.navigation:navigation-fragment-ktx:2.7.5"
     implementation "androidx.navigation:navigation-ui-ktx:2.7.5"
-    implementation 'com.google.android.gms:play-services-maps:17.0.0'
-    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+    implementation 'com.google.android.gms:play-services-location:20.0.0'
 
     implementation 'com.google.maps.android:android-maps-utils:2.2.5'
 
