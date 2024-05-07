@@ -19,16 +19,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-       <com.google.android.gms.maps.MapView
+       <fragment
            android:id="@+id/mapView"
+           android:name="com.naver.maps.map.MapFragment"
            app:layout_constraintTop_toBottomOf="@id/searchToolbar"
            app:layout_constraintBottom_toBottomOf="parent"
            app:layout_constraintStart_toStartOf="parent"
            app:layout_constraintEnd_toEndOf="parent"
            android:layout_height="0dp"
            android:layout_width="match_parent"
-           >
-       </com.google.android.gms.maps.MapView>
+           />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

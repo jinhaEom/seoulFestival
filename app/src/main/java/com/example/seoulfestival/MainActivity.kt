@@ -5,9 +5,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.seoulfestival.databinding.ActivityMainBinding
 import com.example.seoulfestival.toolbar.ToolbarActivity
-
-
-
+import com.naver.maps.map.NaverMapSdk
 class MainActivity : ToolbarActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -20,6 +18,7 @@ class MainActivity : ToolbarActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         binding.bottomNavigation.setupWithNavController(navHostFragment.navController)
 
+        NaverMapSdk.getInstance(this).client = NaverMapSdk.NaverCloudPlatformClient(BuildConfig.NAVER_MAPS_API_KEY)
 
     }
 }
