@@ -1,4 +1,4 @@
-package com.example.seoulfestival.Util
+package com.example.seoulfestival.util
 
 import androidx.navigation.NavOptions
 import androidx.navigation.navOptions

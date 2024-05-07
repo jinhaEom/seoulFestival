@@ -7,6 +7,8 @@ import com.example.seoulfestival.R
 import com.example.seoulfestival.base.BaseFragment
 import com.example.seoulfestival.databinding.FragmentSearchBinding
 import com.example.seoulfestival.response.Event
+import com.example.seoulfestival.ui.search.adapter.FestivalInfoAdapter
+import com.example.seoulfestival.util.AnimationUtils
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
@@ -64,16 +66,25 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), OnMapReadyCallback
     private fun displayMarkers() {
         clearMarkers()
         eventsByLocation.forEach { (location, eventList) ->
-            val marker = Marker().apply {
-                position = location
-                map = naverMap
-                captionText = if (eventList.size > 1) {
-                    "${eventList.first().title} 외"
-                } else {
-                    eventList.first().title ?: "No title"
+            val marker = Marker()
+            marker.position = location
+            marker.map = naverMap
+            marker.captionText = if (eventList.size > 1) "${eventList.first().title} 외" else eventList.first().title ?: "No title"
+            markers.add(marker)
+
+            viewDataBinding.apply {
+                marker.setOnClickListener {
+                    val events = eventsByLocation[LatLng(marker.position.latitude, marker.position.longitude)]
+                    events?.let {
+                        val adapter = FestivalInfoAdapter(requireContext(), it) {
+                            AnimationUtils.fadeOut(viewPager, 300)
+                        }
+                        viewPager.adapter = adapter
+                        AnimationUtils.fadeIn(viewPager, 300)
+                    }
+                    true
                 }
             }
-            markers.add(marker)
         }
     }
 

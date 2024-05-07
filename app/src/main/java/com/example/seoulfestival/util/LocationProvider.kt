@@ -1,4 +1,4 @@
-package com.example.seoulfestival.Util
+package com.example.seoulfestival.util
 
 import android.content.Context
 import android.content.pm.PackageManager
