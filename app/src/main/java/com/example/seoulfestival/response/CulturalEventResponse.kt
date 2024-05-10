@@ -42,5 +42,11 @@ data class Event(
     @SerializedName("LOT")
     val lot : Double,
     @SerializedName("LAT")
-    val lat : Double
+    val lat : Double,
+    @SerializedName("USE_TRGT")
+    val age : String,
+    @SerializedName("USE_FEE")
+    val fee : String,
+    @SerializedName("ORG_LINK")
+    val orgLink : String,
 )

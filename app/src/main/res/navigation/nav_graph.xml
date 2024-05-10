@@ -31,6 +31,7 @@
         android:name="com.example.seoulfestival.ui.search.SearchFragment"
         android:label="SearchFragment"
         tools:layout="@layout/fragment_search" />
+
     <fragment
         android:id="@+id/mypageFragment"
         android:name="com.example.seoulfestival.ui.mypage.MyPageFragment"
@@ -42,29 +43,57 @@
         android:name="com.example.seoulfestival.ui.home.opera.OperaFragment"
         android:label="operaFragment"
         tools:layout="@layout/fragment_play"
-        />
+        >
+        <action
+            android:id="@+id/actionPlayDetailFragment"
+            app:destination="@id/playDetailFragment"/>
+    </fragment>
 
     <fragment
         android:id="@+id/danceFragment"
         android:name="com.example.seoulfestival.ui.home.dance.DanceFragment"
         android:label="danceFragment"
-        tools:layout="@layout/fragment_play" />
+        tools:layout="@layout/fragment_play" >
+        <action
+            android:id="@+id/actionDetailFragment"
+            app:destination="@id/playDetailFragment"/>
+    </fragment>
 
     <fragment
         android:id="@+id/classicFragment"
         android:name="com.example.seoulfestival.ui.home.classic.ClassicFragment"
         android:label="classicFragment"
         tools:layout="@layout/fragment_play"
-        />
+        >
+        <action
+            android:id="@+id/actionDetailFragment"
+            app:destination="@id/playDetailFragment"/>
+    </fragment>
     <fragment
         android:id="@+id/gukakFragment"
         android:name="com.example.seoulfestival.ui.home.gukak.GukakFragment"
         android:label="gukakFragment"
-        tools:layout="@layout/fragment_play"/>
+        tools:layout="@layout/fragment_play">
+        <action
+            android:id="@+id/actionDetailFragment"
+            app:destination="@id/playDetailFragment"/>
+    </fragment>
     <fragment
         android:id="@+id/dramaFragment"
         android:name="com.example.seoulfestival.ui.home.drama.DramaFragment"
         android:label="dramaFragment"
-        tools:layout="@layout/fragment_play"/>
+        tools:layout="@layout/fragment_play">
+        <action
+            android:id="@+id/actionDetailFragment"
+            app:destination="@id/playDetailFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/playDetailFragment"
+        android:name="com.example.seoulfestival.ui.home.PlayDetailFragment"
+        android:label="detailFragment"
+        tools:layout="@layout/fragment_play_detail"
+        ></fragment>
+
 
 </navigation>

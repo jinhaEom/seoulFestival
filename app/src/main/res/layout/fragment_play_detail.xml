@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/titleTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:fontFamily="@font/gamtanregular"
+                    android:text="오페라갈라"
+                    android:textColor="@color/black"
+                    android:textSize="24dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/posterImg"
+                    android:layout_width="250dp"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="24dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/titleTv"
+                    tools:src="@drawable/drama" />
+
+                <ImageView
+                    android:id="@+id/periodImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:src="@drawable/ic_calendar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/posterImg" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/periodTv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintBottom_toBottomOf="@id/periodImg"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/periodImg"
+                    app:layout_constraintTop_toTopOf="@id/periodImg"
+                    tools:text="2024-12-07 ~ 2024-12-07" />
+
+
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ageImg"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:src="@drawable/ic_people"
+                    android:textSize="24dp"
+                    app:layout_constraintEnd_toEndOf="@id/periodImg"
+                    app:layout_constraintStart_toStartOf="@id/periodImg"
+                    app:layout_constraintTop_toBottomOf="@id/periodImg" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/ageTv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="@id/ageImg"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ageImg"
+                    app:layout_constraintTop_toTopOf="@id/ageImg"
+                    tools:text="7세 이상 관람 가능(2017년생부터 관람 가능)" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/feeImg"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:src="@drawable/ic_money"
+                    app:layout_constraintEnd_toEndOf="@id/ageImg"
+                    app:layout_constraintStart_toStartOf="@id/ageImg"
+                    app:layout_constraintTop_toBottomOf="@id/ageImg" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/feeTv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="@id/feeImg"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/feeImg"
+                    app:layout_constraintTop_toTopOf="@id/feeImg"
+                    tools:text="SUITE석 140,000원 / VIP석 120,000원 / R석 100,000원 / S석 80,000원 / A석 50,000원 / B석 30,000원" />
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/orgLinkImg"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="36dp"
+                    android:src="@drawable/ic_link"
+                    app:layout_constraintEnd_toEndOf="@id/feeImg"
+                    app:layout_constraintStart_toStartOf="@id/feeImg"
+                    app:layout_constraintTop_toBottomOf="@id/feeImg" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/orgLinkTv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    app:layout_constraintBottom_toBottomOf="@id/orgLinkImg"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/orgLinkImg"
+                    app:layout_constraintTop_toTopOf="@id/orgLinkImg"
+                    tools:text="https://www.sejongpac.or.kr/portal/performance/performance/view.do?menuNo=200004&amp;performIdx=34877" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btOk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bottom_btn"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="확인"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
