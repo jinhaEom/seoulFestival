@@ -45,9 +45,9 @@ data class Event(
     @SerializedName("LAT")
     val lat : Double,
     @SerializedName("USE_TRGT")
-    val age : String,
+    val age : String?,
     @SerializedName("USE_FEE")
-    val fee : String,
+    val fee : String?,
     @SerializedName("ORG_LINK")
-    val orgLink : String,
+    val orgLink : String?,
 ) :Serializable

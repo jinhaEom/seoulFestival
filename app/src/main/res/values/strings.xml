@@ -6,4 +6,5 @@
     <string name="gukak">국악</string>
     <string name="drama">연극</string>
     <string name="mapSearch">위치검색</string>
+    <string name="default_info_text">홈페이지를 참고해주세요</string>
 </resources>

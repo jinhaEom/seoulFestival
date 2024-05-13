@@ -9,6 +9,7 @@ import com.example.seoulfestival.R
 import com.example.seoulfestival.base.BaseFragment
 import com.example.seoulfestival.databinding.FragmentPlayBinding
 import com.example.seoulfestival.ui.EventAdapter
+import com.example.seoulfestival.util.getNavOptions
 import com.example.seoulfestival.viewmodel.CulturalEventsViewModel
 import com.example.seoulfestival.viewModel.CulturalEventsViewModelFactory
 
@@ -29,7 +30,7 @@ class OperaFragment : BaseFragment<FragmentPlayBinding>() {
                 this.layoutManager = layoutManager
                 adapter = EventAdapter(requireContext(), emptyList(), "뮤지컬/오페라") { event ->
                     val action = OperaFragmentDirections.actionPlayDetailFragment(event)
-                    findNavController().navigate(action)
+                    findNavController().navigate(action, getNavOptions)
                 }
 
             }

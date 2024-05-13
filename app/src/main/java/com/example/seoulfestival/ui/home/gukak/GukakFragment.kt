@@ -9,6 +9,7 @@ import com.example.seoulfestival.R
 import com.example.seoulfestival.base.BaseFragment
 import com.example.seoulfestival.databinding.FragmentPlayBinding
 import com.example.seoulfestival.ui.EventAdapter
+import com.example.seoulfestival.util.getNavOptions
 import com.example.seoulfestival.viewModel.CulturalEventsViewModelFactory
 import com.example.seoulfestival.viewmodel.CulturalEventsViewModel
 
@@ -30,22 +31,14 @@ class GukakFragment : BaseFragment<FragmentPlayBinding>() {
                 this.layoutManager = layoutManager
                 adapter = EventAdapter(requireContext(), emptyList(), "국악") { event ->
                     val action = GukakFragmentDirections.actionDetailFragment(event)
-                    findNavController().navigate(action)
+                    findNavController().navigate(action, getNavOptions)
                 }
             }
             playToolbar.toolbarBack.setOnClickListener{
                 findNavController().navigateUp()
             }
-
-
-
             viewModel.fetchAllCulturalEvents()
         }
-
-
-
-
-
     }
 
     override fun observeData() {

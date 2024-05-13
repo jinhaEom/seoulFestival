@@ -1,7 +1,5 @@
 package com.example.seoulfestival.ui.home
 
-import android.content.Intent
-import android.net.Uri
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -18,25 +16,24 @@ class PlayDetailFragment(override val layoutResourceId: Int = R.layout.fragment_
             btOk.setOnClickListener {
                 findNavController().navigateUp()
             }
-            orgLinkTv.setOnClickListener {
-                val url = orgLinkTv.text.toString()
-                val intent = Intent(Intent.ACTION_VIEW)
-                intent.data = Uri.parse(url)
-                startActivity(intent)
-            }
         }
     }
 
     override fun observeData() {
     }
     private fun displayEventData(event: Event) {
-        viewDataBinding.apply{
-          titleTv.text = event.title
-            periodTv.text = event.date
-            ageTv.text = event.age
-            feeTv.text = event.fee
-            orgLinkTv.text = event.orgLink
-            Glide.with(requireContext()).load(event.img).into(posterImg)
+        viewDataBinding.apply {
+            titleTv.text = (event.title ?: R.string.default_info_text).toString()
+            periodTv.text = (event.date ?: R.string.default_info_text).toString()
+            locationTv.text = "${event.guname} - ${event.place}"
+            ageTv.text = (event.age ?: R.string.default_info_text).toString()
+            feeTv.text = (event.fee ?: R.string.default_info_text).toString()
+            orgLinkTv.text = (event.orgLink ?: R.string.default_info_text).toString()
+
+            // 이미지 로딩
+            event.img?.let {
+                Glide.with(requireContext()).load(it).into(posterImg)
+            } ?: posterImg.setImageResource(R.drawable.drama)  // 기본 이미지
         }
     }
 }
