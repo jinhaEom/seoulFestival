@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -16,22 +16,25 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/contentCs"
                 android:layout_width="match_parent"
                 android:layout_height="0dp">
 
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/titleTv"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="24dp"
+                    android:layout_marginEnd="24dp"
                     android:fontFamily="@font/gamtanregular"
-                    android:text="오페라갈라"
                     android:textColor="@color/black"
                     android:textSize="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="오페라갈라" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/posterImg"
@@ -44,103 +47,129 @@
                     app:layout_constraintTop_toBottomOf="@id/titleTv"
                     tools:src="@drawable/drama" />
 
-                <ImageView
-                    android:id="@+id/periodImg"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/periodBox"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="24dp"
-                    android:src="@drawable/ic_calendar"
+                    android:layout_marginEnd="12dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@+id/ageBox"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/posterImg" />
+                    app:layout_constraintTop_toBottomOf="@id/posterImg">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/periodTv"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginStart="12dp"
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                    app:layout_constraintBottom_toBottomOf="@id/periodImg"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/periodImg"
-                    app:layout_constraintTop_toTopOf="@id/periodImg"
-                    tools:text="2024-12-07 ~ 2024-12-07" />
+                    <ImageView
+                        android:id="@+id/periodImg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_calendar" />
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/periodTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        tools:text="2024-12-07 ~ 2024-12-07" />
+                </LinearLayout>
 
-
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/ageImg"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:src="@drawable/ic_people"
-                    android:textSize="24dp"
-                    app:layout_constraintEnd_toEndOf="@id/periodImg"
-                    app:layout_constraintStart_toStartOf="@id/periodImg"
-                    app:layout_constraintTop_toBottomOf="@id/periodImg" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/ageTv"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/black"
-                    android:textSize="14dp"
-                    app:layout_constraintBottom_toBottomOf="@id/ageImg"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/ageImg"
-                    app:layout_constraintTop_toTopOf="@id/ageImg"
-                    tools:text="7세 이상 관람 가능(2017년생부터 관람 가능)" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/feeImg"
+                <LinearLayout
+                    android:id="@+id/ageBox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
-                    android:src="@drawable/ic_money"
-                    app:layout_constraintEnd_toEndOf="@id/ageImg"
-                    app:layout_constraintStart_toStartOf="@id/ageImg"
-                    app:layout_constraintTop_toBottomOf="@id/ageImg" />
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@id/feeBox"
+                    app:layout_constraintEnd_toEndOf="@+id/periodBox"
+                    app:layout_constraintStart_toStartOf="@+id/periodBox"
+                    app:layout_constraintTop_toBottomOf="@id/periodBox">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/feeTv"
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ageImg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_people"
+                        android:textSize="24dp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/ageTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="12dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/black"
+                        android:textSize="14dp"
+                        tools:text="7세 이상 관람 가능(2017년생부터 관람 가능)" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/feeBox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:textColor="@color/black"
-                    android:textSize="14dp"
-                    app:layout_constraintBottom_toBottomOf="@id/feeImg"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/feeImg"
-                    app:layout_constraintTop_toTopOf="@id/feeImg"
-                    tools:text="SUITE석 140,000원 / VIP석 120,000원 / R석 100,000원 / S석 80,000원 / A석 50,000원 / B석 30,000원" />
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@id/linkBox"
+                    app:layout_constraintEnd_toEndOf="@+id/periodBox"
+                    app:layout_constraintStart_toStartOf="@+id/periodBox"
+                    app:layout_constraintTop_toBottomOf="@id/ageBox">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/feeImg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_money" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/feeTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:textColor="@color/black"
+                        android:textSize="14dp"
+                        tools:text="SUITE석 140,000원 / VIP석 120,000원 / R석 100,000원 / S석 80,000원 / A석 50,000원 / B석 30,000원" />
+                </LinearLayout>
 
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/orgLinkImg"
+                <LinearLayout
+                    android:id="@+id/linkBox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="36dp"
-                    android:src="@drawable/ic_link"
-                    app:layout_constraintEnd_toEndOf="@id/feeImg"
-                    app:layout_constraintStart_toStartOf="@id/feeImg"
-                    app:layout_constraintTop_toBottomOf="@id/feeImg" />
+                    android:layout_marginTop="18dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/periodBox"
+                    app:layout_constraintStart_toStartOf="@+id/periodBox"
+                    app:layout_constraintTop_toBottomOf="@id/feeBox">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/orgLinkTv"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:textColor="@color/black"
-                    android:textSize="14dp"
-                    app:layout_constraintBottom_toBottomOf="@id/orgLinkImg"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/orgLinkImg"
-                    app:layout_constraintTop_toTopOf="@id/orgLinkImg"
-                    tools:text="https://www.sejongpac.or.kr/portal/performance/performance/view.do?menuNo=200004&amp;performIdx=34877" />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/orgLinkImg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_link" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/orgLinkTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="12dp"
+                        android:clickable="true"
+                        android:ellipsize="end"
+                        android:focusable="true"
+                        android:maxLines="2"
+                        android:textColor="@color/black"
+                        android:textSize="14dp"
+                        tools:text="https://www.sejongpac.or.kr/portal/performance/performance/view.do?menuNo=200004&amp;performIdx=34877" />
+                </LinearLayout>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -150,8 +179,8 @@
             android:id="@+id/btOk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginEnd="48dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginEnd="36dp"
             android:layout_marginBottom="12dp"
             android:background="@drawable/bottom_btn"
             android:gravity="center"

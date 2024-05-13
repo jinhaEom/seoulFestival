@@ -1,6 +1,7 @@
 package com.example.seoulfestival.response
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class CulturalEventInfoResponse(
     @SerializedName("culturalEventInfo")
@@ -49,4 +50,4 @@ data class Event(
     val fee : String,
     @SerializedName("ORG_LINK")
     val orgLink : String,
-)
+) :Serializable

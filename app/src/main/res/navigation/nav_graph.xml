@@ -46,7 +46,11 @@
         >
         <action
             android:id="@+id/actionPlayDetailFragment"
-            app:destination="@id/playDetailFragment"/>
+            app:destination="@id/playDetailFragment">
+            <argument
+                android:name="event"
+                app:argType="com.example.seoulfestival.response.Event" />
+        </action>
     </fragment>
 
     <fragment
@@ -56,7 +60,11 @@
         tools:layout="@layout/fragment_play" >
         <action
             android:id="@+id/actionDetailFragment"
-            app:destination="@id/playDetailFragment"/>
+            app:destination="@id/playDetailFragment">
+            <argument
+                android:name="event"
+                app:argType="com.example.seoulfestival.response.Event" />
+        </action>
     </fragment>
 
     <fragment
@@ -67,7 +75,11 @@
         >
         <action
             android:id="@+id/actionDetailFragment"
-            app:destination="@id/playDetailFragment"/>
+            app:destination="@id/playDetailFragment">
+            <argument
+                android:name="event"
+                app:argType="com.example.seoulfestival.response.Event" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/gukakFragment"
@@ -76,7 +88,11 @@
         tools:layout="@layout/fragment_play">
         <action
             android:id="@+id/actionDetailFragment"
-            app:destination="@id/playDetailFragment"/>
+            app:destination="@id/playDetailFragment">
+            <argument
+                android:name="event"
+                app:argType="com.example.seoulfestival.response.Event" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/dramaFragment"
@@ -85,7 +101,11 @@
         tools:layout="@layout/fragment_play">
         <action
             android:id="@+id/actionDetailFragment"
-            app:destination="@id/playDetailFragment"/>
+            app:destination="@id/playDetailFragment">
+            <argument
+                android:name="event"
+                app:argType="com.example.seoulfestival.response.Event" />
+        </action>
     </fragment>
 
     <fragment
@@ -93,7 +113,11 @@
         android:name="com.example.seoulfestival.ui.home.PlayDetailFragment"
         android:label="detailFragment"
         tools:layout="@layout/fragment_play_detail"
-        ></fragment>
+        >
+        <argument
+            android:name="event"
+            app:argType="com.example.seoulfestival.response.Event" />
+    </fragment>
 
 
 </navigation>

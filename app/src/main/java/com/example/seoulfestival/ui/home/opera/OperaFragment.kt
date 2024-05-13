@@ -1,6 +1,5 @@
 package com.example.seoulfestival.ui.home.opera
 
-import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -28,21 +27,17 @@ class OperaFragment : BaseFragment<FragmentPlayBinding>() {
             val layoutManager = LinearLayoutManager(requireContext())
             playRecyclerView.apply {
                 this.layoutManager = layoutManager
-                adapter = EventAdapter(requireContext(), emptyList(),"뮤지컬/오페라")
+                adapter = EventAdapter(requireContext(), emptyList(), "뮤지컬/오페라") { event ->
+                    val action = OperaFragmentDirections.actionPlayDetailFragment(event)
+                    findNavController().navigate(action)
+                }
+
             }
             playToolbar.toolbarBack.setOnClickListener{
                 findNavController().navigateUp()
             }
-
-
-
             viewModel.fetchAllCulturalEvents()
         }
-
-
-
-
-
     }
 
     override fun observeData() {

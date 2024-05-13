@@ -28,7 +28,10 @@ class GukakFragment : BaseFragment<FragmentPlayBinding>() {
             val layoutManager = LinearLayoutManager(requireContext())
             playRecyclerView.apply {
                 this.layoutManager = layoutManager
-                adapter = EventAdapter(requireContext(), emptyList(),"국악")
+                adapter = EventAdapter(requireContext(), emptyList(), "국악") { event ->
+                    val action = GukakFragmentDirections.actionDetailFragment(event)
+                    findNavController().navigate(action)
+                }
             }
             playToolbar.toolbarBack.setOnClickListener{
                 findNavController().navigateUp()

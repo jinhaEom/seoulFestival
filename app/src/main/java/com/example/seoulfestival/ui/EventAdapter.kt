@@ -14,7 +14,8 @@ import com.example.seoulfestival.response.Event
 class EventAdapter(
     private val context: Context,
     private var events: List<Event>,
-    private val eventType: String  // 이벤트 유형을 지정하는 매개변수 추가
+    private val eventType: String,
+    private val onItemClicked: (Event) -> Unit
 ) : RecyclerView.Adapter<EventAdapter.ViewHolder>() {
 
     // 초기 필터링된 리스트
@@ -35,6 +36,14 @@ class EventAdapter(
         private val locationTx: TextView = itemView.findViewById(R.id.contentPlace)
         private val titleTx: TextView = itemView.findViewById(R.id.contentTitle)
         private val imageView: ImageView = itemView.findViewById(R.id.contentImageView)
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    onItemClicked(filteredEvents[position])
+                }
+            }
+        }
 
         fun bind(event: Event) {
             titleTx.text = event.title
