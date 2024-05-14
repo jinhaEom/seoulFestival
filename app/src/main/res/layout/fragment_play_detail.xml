@@ -142,7 +142,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="18dp"
                     android:orientation="horizontal"
-                    app:layout_constraintBottom_toTopOf="@id/linkBox"
+                    app:layout_constraintBottom_toTopOf="@id/bookingMark"
                     app:layout_constraintEnd_toEndOf="@+id/periodBox"
                     app:layout_constraintStart_toStartOf="@+id/periodBox"
                     app:layout_constraintTop_toBottomOf="@id/ageBox">
@@ -164,18 +164,35 @@
                         tools:text="SUITE석 140,000원 / VIP석 120,000원 / R석 100,000원 / S석 80,000원 / A석 50,000원 / B석 30,000원" />
                 </LinearLayout>
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/bookingMark"
+                    android:text="티켓 예매 링크"
+                    android:drawableRight="@drawable/ic_round_right_arrow"
+                    android:drawablePadding="4dp"
+                    android:gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:textSize="14dp"
+                    android:layout_marginBottom="4dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="24dp"
+                    app:layout_constraintBottom_toTopOf="@id/linkBox"
+                    app:layout_constraintStart_toStartOf="@id/linkBox"
+                    app:layout_constraintTop_toBottomOf="@+id/feeBox" />
+
 
                 <LinearLayout
                     android:id="@+id/linkBox"
                     android:layout_width="0dp"
                     android:layout_marginBottom="24dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/periodBox"
                     app:layout_constraintStart_toStartOf="@+id/periodBox"
-                    app:layout_constraintTop_toBottomOf="@id/feeBox">
+                    app:layout_constraintTop_toBottomOf="@id/bookingMark">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/orgLinkImg"

@@ -24,6 +24,7 @@ class DanceFragment : BaseFragment<FragmentPlayBinding>() {
         viewModel = ViewModelProvider(this, CulturalEventsViewModelFactory(requireContext())).get(
             CulturalEventsViewModel::class.java)
         viewDataBinding.apply {
+            playToolbar.toolbarTitle.visibility = View.VISIBLE
             playToolbar.toolbarTitle.text = getString(R.string.dance)
             playToolbar.toolbarBack.visibility = View.VISIBLE
 

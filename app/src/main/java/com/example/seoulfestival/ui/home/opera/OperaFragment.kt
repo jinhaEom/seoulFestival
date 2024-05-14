@@ -22,6 +22,7 @@ class OperaFragment : BaseFragment<FragmentPlayBinding>() {
 
         viewModel = ViewModelProvider(this, CulturalEventsViewModelFactory(requireContext())).get(CulturalEventsViewModel::class.java)
         viewDataBinding.apply {
+            playToolbar.toolbarTitle.visibility = View.VISIBLE
             playToolbar.toolbarTitle.text = getString(R.string.opera)
             playToolbar.toolbarBack.visibility = View.VISIBLE
 

@@ -3,4 +3,11 @@
     <style name="RoundedImageView" parent="">
         <item name="cornerSize">12dp</item>
     </style>
+    <style name="eight_four_padding" parent="">
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+
+    </style>
 </resources>

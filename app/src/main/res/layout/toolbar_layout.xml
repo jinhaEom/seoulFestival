@@ -25,13 +25,35 @@
                 android:layout_gravity="center"
                 android:textColor="@color/black"
                 android:textSize="18dp"
+                android:visibility="gone"
                 tools:text="title" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appLogo"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:scaleType="fitXY"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:src="@drawable/app_round_logo"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/leftTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                tools:text="leftTitle"
+                android:paddingStart="4dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:textSize="14dp"/>
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/toolbarBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
+                android:visibility="gone"
                 android:src="@drawable/ic_back" />
 
         </androidx.appcompat.widget.Toolbar>

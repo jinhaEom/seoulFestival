@@ -28,6 +28,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), OnMapReadyCallback
     override fun aboutBinding() {
         val vt = viewDataBinding.searchToolbar
         vt.toolbarTitle.text = getString(R.string.mapSearch)
+        vt.toolbarTitle.visibility = View.VISIBLE
         vt.toolbarBack.visibility = View.GONE
 
         viewModel = ViewModelProvider(this, CulturalEventsViewModelFactory(requireContext())).get(
