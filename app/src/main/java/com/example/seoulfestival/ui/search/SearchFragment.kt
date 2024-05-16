@@ -56,7 +56,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), OnMapReadyCallback
         viewDataBinding.guNameSpinner.adapter = spinnerAdapter
 
         viewDataBinding.guNameSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val selectedGu = parent.getItemAtPosition(position) as String
                 when (selectedGu) {
                     "지역을 선택해주세요", "전체" -> filterMarkersByGuName("")

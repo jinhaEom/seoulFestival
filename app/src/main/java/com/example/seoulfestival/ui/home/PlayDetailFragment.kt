@@ -1,5 +1,6 @@
 package com.example.seoulfestival.ui.home
 
+import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
@@ -10,6 +11,10 @@ import com.example.seoulfestival.response.Event
 
 class PlayDetailFragment(override val layoutResourceId: Int = R.layout.fragment_play_detail) : BaseFragment<FragmentPlayDetailBinding>() {
     override fun aboutBinding() {
+        val vt = viewDataBinding.detailToolbar
+        vt.toolbarTitle.visibility = View.VISIBLE
+        vt.toolbarBack.visibility = View.VISIBLE
+        vt.toolbarTitle.text = getString(R.string.information)
         val event = navArgs<PlayDetailFragmentArgs>().value.event
         displayEventData(event)
         viewDataBinding.apply{
@@ -17,6 +22,9 @@ class PlayDetailFragment(override val layoutResourceId: Int = R.layout.fragment_
                 findNavController().navigateUp()
             }
         }
+        vt.toolbarBack.setOnClickListener{
+                findNavController().navigateUp()
+            }
     }
 
     override fun observeData() {

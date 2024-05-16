@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="48dp"
         android:background="@color/white"
-
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,7 +36,7 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/festivalImage"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
                 android:scaleType="fitXY"
                 tools:src="@drawable/drama" />
 
@@ -61,6 +60,16 @@
                 android:textSize="14dp"
                 android:visibility="visible"
                 tools:text="Festival Location" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/bookingTv"
+                android:layout_width="wrap_content"
+                android:text="예매하러가기"
+                android:layout_gravity="end"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/blue"
+                android:drawableRight="@drawable/ic_arrow_blue_right"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

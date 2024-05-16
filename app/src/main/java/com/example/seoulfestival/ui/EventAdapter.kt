@@ -2,13 +2,10 @@ package com.example.seoulfestival.ui
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.seoulfestival.R
+import com.example.seoulfestival.databinding.ItemPlayListBinding
 import com.example.seoulfestival.response.Event
 
 class EventAdapter(
@@ -22,8 +19,8 @@ class EventAdapter(
     private var filteredEvents = events.filter { it.codename == eventType }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_play_list, parent, false)
-        return ViewHolder(view)
+        val binding = ItemPlayListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun getItemCount(): Int = filteredEvents.size
@@ -32,12 +29,9 @@ class EventAdapter(
         holder.bind(filteredEvents[position])
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val locationTx: TextView = itemView.findViewById(R.id.contentPlace)
-        private val titleTx: TextView = itemView.findViewById(R.id.contentTitle)
-        private val imageView: ImageView = itemView.findViewById(R.id.contentImageView)
+    inner class ViewHolder(private val binding: ItemPlayListBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
-            itemView.setOnClickListener {
+            binding.root.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     onItemClicked(filteredEvents[position])
@@ -46,9 +40,9 @@ class EventAdapter(
         }
 
         fun bind(event: Event) {
-            titleTx.text = event.title
-            locationTx.text = event.place
-            Glide.with(context).load(event.img).into(imageView)
+            binding.contentTitle.text = event.title
+            binding.contentPlace.text = event.place
+            Glide.with(context).load(event.img).into(binding.contentImageView)
         }
     }
 
@@ -59,4 +53,3 @@ class EventAdapter(
         notifyDataSetChanged()
     }
 }
-
