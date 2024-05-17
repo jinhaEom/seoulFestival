@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.seoulfestival.R
-import com.example.seoulfestival.util.getNavOptions
 import com.example.seoulfestival.base.BaseFragment
 import com.example.seoulfestival.databinding.FragmentHomeBinding
+import com.example.seoulfestival.util.getNavOptions
 import com.example.seoulfestival.viewModel.CulturalEventsViewModelFactory
 import com.example.seoulfestival.viewmodel.CulturalEventsViewModel
 
@@ -22,14 +22,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     private lateinit var adapter: RecommendPlaceAdapter
 
     override fun aboutBinding() {
-        val vt = viewDataBinding.homeToolbar
-        vt.appLogo.visibility = View.VISIBLE
-        vt.leftTitle.visibility = View.VISIBLE
-        vt.leftTitle.text = getString(R.string.app_name)
-        vt.appLogo.setOnClickListener {
-            viewDataBinding.homeScrollView.smoothScrollTo(0, 0)
-        }
-
+        setupToolbar(
+            true, true, false, getString(R.string.app_name),
+            appLogoClickListener = { viewDataBinding.homeScrollView.smoothScrollTo(0, 0) }
+        )
         viewModel = ViewModelProvider(this, CulturalEventsViewModelFactory(requireContext())).get(CulturalEventsViewModel::class.java)
         layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         val recyclerView = viewDataBinding.root.findViewById<RecyclerView>(R.id.recommendRecyclerView)

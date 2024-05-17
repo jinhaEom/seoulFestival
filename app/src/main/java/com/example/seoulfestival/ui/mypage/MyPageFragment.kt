@@ -7,7 +7,6 @@ import com.example.seoulfestival.databinding.FragmentHomeBinding
 class MyPageFragment : BaseFragment<FragmentHomeBinding>() {
     override val layoutResourceId: Int = R.layout.fragment_mypage
     override fun aboutBinding() {
-        setupToolbar("page", false)
 
     }
 

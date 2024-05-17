@@ -1,39 +1,62 @@
 package com.example.seoulfestival.toolbar
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import com.example.seoulfestival.R
-import com.example.seoulfestival.databinding.ToolbarLayoutBinding
+import android.widget.TextView
+import androidx.appcompat.widget.AppCompatImageView
 
-abstract class ToolbarActivity : AppCompatActivity() {
+open class ToolbarActivity : AppCompatActivity() {
 
-    private lateinit var binding: ToolbarLayoutBinding
+    protected lateinit var _binding: ViewDataBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ToolbarLayoutBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        setSupportActionBar(binding.toolbar)
+    }
 
-        // 뒤로 가기 버튼의 기본 동작 설정
-          setSupportActionBar(binding.toolbar) // Toolbar를 액션바로 설정
-        binding.toolbar.title = "제목" // 제목 설정
-        binding.toolbar.setNavigationIcon(R.drawable.ic_back) // 뒤로 가기 버튼 설정
-        binding.toolbar.setNavigationOnClickListener {
-            onBackPressed() // 뒤로 가기 버튼 클릭 이벤트 처리
+    protected fun setContentViewWithBinding(layoutResID: Int) {
+        _binding = DataBindingUtil.setContentView(this, layoutResID)
+    }
+
+     fun setupToolbar(
+        appLogoVisible: Boolean,
+        leftTitleVisible: Boolean,
+        toolbarTitleVisible: Boolean,
+        leftTitleText: String? = null,
+        toolbarTitleText: String? = null,
+        appLogoClickListener: View.OnClickListener? = null,
+        toolbarBackClickListener: View.OnClickListener? = null
+    ) {
+        val toolbar = findViewById<View>(R.id.homeToolbar)
+        val appLogo: AppCompatImageView = toolbar.findViewById(R.id.appLogo)
+        val leftTitle: TextView = toolbar.findViewById(R.id.leftTitle)
+        val toolbarTitle: TextView = toolbar.findViewById(R.id.toolbarTitle)
+        val toolbarBack: AppCompatImageView = toolbar.findViewById(R.id.toolbarBack)
+
+        appLogo.visibility = if (appLogoVisible) View.VISIBLE else View.GONE
+        leftTitle.visibility = if (leftTitleVisible) View.VISIBLE else View.GONE
+        toolbarTitle.visibility = if (toolbarTitleVisible) View.VISIBLE else View.GONE
+
+        leftTitleText?.let {
+            leftTitle.text = it
+        }
+
+        toolbarTitleText?.let {
+            toolbarTitle.text = it
+        }
+
+        appLogoClickListener?.let {
+            appLogo.setOnClickListener(it)
+        }
+
+        toolbarBackClickListener?.let {
+            toolbarBack.visibility = View.VISIBLE
+            toolbarBack.setOnClickListener(it)
+        } ?: run {
+            toolbarBack.visibility = View.GONE
         }
     }
-
-    fun setToolbarTitle(title: String) {
-        Log.d("ToolbarActivity", "Setting toolbar title: $title")
-        binding.toolbarTitle.text = title
-    }
-
-    fun showBackButton(show: Boolean) {
-        Log.d("ToolbarActivity", "Show back button: $show")
-        binding.toolbarBack.visibility = if (show) View.VISIBLE else View.GONE
-    }
-
 }
