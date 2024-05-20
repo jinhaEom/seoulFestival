@@ -20,11 +20,19 @@ class OperaFragment : BaseFragment<FragmentPlayBinding>() {
     override fun aboutBinding() {
         viewDataBinding.lifecycleOwner = this
 
-        viewModel = ViewModelProvider(this, CulturalEventsViewModelFactory(requireContext())).get(CulturalEventsViewModel::class.java)
+        viewModel = ViewModelProvider(this, CulturalEventsViewModelFactory(requireContext())).get(
+            CulturalEventsViewModel::class.java
+        )
         viewDataBinding.apply {
-            playToolbar.toolbarTitle.visibility = View.VISIBLE
-            playToolbar.toolbarTitle.text = getString(R.string.opera)
-            playToolbar.toolbarBack.visibility = View.VISIBLE
+            setupToolbar(
+                appLogoVisible = false,
+                leftTitleVisible = false,
+                toolbarTitleVisible = true,
+                toolbarTitleText = getString(R.string.opera),
+                toolbarBackClickListener = View.OnClickListener {
+                    findNavController().navigateUp()
+                }
+            )
 
             val layoutManager = LinearLayoutManager(requireContext())
             playRecyclerView.apply {
@@ -34,9 +42,6 @@ class OperaFragment : BaseFragment<FragmentPlayBinding>() {
                     findNavController().navigate(action, getNavOptions)
                 }
 
-            }
-            playToolbar.toolbarBack.setOnClickListener{
-                findNavController().navigateUp()
             }
             viewModel.fetchAllCulturalEvents()
         }

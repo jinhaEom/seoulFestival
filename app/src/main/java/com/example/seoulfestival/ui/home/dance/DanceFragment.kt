@@ -9,7 +9,6 @@ import com.example.seoulfestival.R
 import com.example.seoulfestival.base.BaseFragment
 import com.example.seoulfestival.databinding.FragmentPlayBinding
 import com.example.seoulfestival.ui.EventAdapter
-import com.example.seoulfestival.ui.home.classic.ClassicFragmentDirections
 import com.example.seoulfestival.util.getNavOptions
 import com.example.seoulfestival.viewModel.CulturalEventsViewModelFactory
 import com.example.seoulfestival.viewmodel.CulturalEventsViewModel
@@ -24,10 +23,15 @@ class DanceFragment : BaseFragment<FragmentPlayBinding>() {
         viewModel = ViewModelProvider(this, CulturalEventsViewModelFactory(requireContext())).get(
             CulturalEventsViewModel::class.java)
         viewDataBinding.apply {
-            playToolbar.toolbarTitle.visibility = View.VISIBLE
-            playToolbar.toolbarTitle.text = getString(R.string.dance)
-            playToolbar.toolbarBack.visibility = View.VISIBLE
-
+            setupToolbar(
+                appLogoVisible = false,
+                leftTitleVisible = false,
+                toolbarTitleVisible = true,
+                toolbarTitleText = getString(R.string.dance),
+                toolbarBackClickListener = View.OnClickListener {
+                    findNavController().navigateUp()
+                }
+            )
             val layoutManager = LinearLayoutManager(requireContext())
             playRecyclerView.apply {
                 this.layoutManager = layoutManager
@@ -36,9 +40,7 @@ class DanceFragment : BaseFragment<FragmentPlayBinding>() {
                     findNavController().navigate(action, getNavOptions)
                 }
             }
-            playToolbar.toolbarBack.setOnClickListener{
-                findNavController().navigateUp()
-            }
+
             viewModel.fetchAllCulturalEvents()
         }
     }

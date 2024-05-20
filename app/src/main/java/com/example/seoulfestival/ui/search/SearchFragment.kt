@@ -1,6 +1,5 @@
 package com.example.seoulfestival.ui.search
 
-import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import androidx.lifecycle.Observer
@@ -30,10 +29,13 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), OnMapReadyCallback
     override val layoutResourceId: Int = R.layout.fragment_search
 
     override fun aboutBinding() {
-        val vt = viewDataBinding.searchToolbar
-        vt.toolbarTitle.text = getString(R.string.mapSearch)
-        vt.toolbarTitle.visibility = View.VISIBLE
-        vt.toolbarBack.visibility = View.GONE
+        setupToolbar(
+            appLogoVisible = false,
+            leftTitleVisible = false,
+            toolbarTitleVisible = true,
+            toolbarTitleText = getString(R.string.mapSearch),
+            toolbarBackClickListener = null
+        )
 
         viewModel = ViewModelProvider(this, CulturalEventsViewModelFactory(requireContext())).get(
             CulturalEventsViewModel::class.java

@@ -11,10 +11,15 @@ import com.example.seoulfestival.response.Event
 
 class PlayDetailFragment(override val layoutResourceId: Int = R.layout.fragment_play_detail) : BaseFragment<FragmentPlayDetailBinding>() {
     override fun aboutBinding() {
-        val vt = viewDataBinding.detailToolbar
-        vt.toolbarTitle.visibility = View.VISIBLE
-        vt.toolbarBack.visibility = View.VISIBLE
-        vt.toolbarTitle.text = getString(R.string.information)
+        setupToolbar(
+            appLogoVisible = false,
+            leftTitleVisible = false,
+            toolbarTitleVisible = true,
+            toolbarTitleText = getString(R.string.information),
+            toolbarBackClickListener = View.OnClickListener {
+                findNavController().navigateUp()
+            }
+        )
         val event = navArgs<PlayDetailFragmentArgs>().value.event
         displayEventData(event)
         viewDataBinding.apply{
@@ -22,9 +27,7 @@ class PlayDetailFragment(override val layoutResourceId: Int = R.layout.fragment_
                 findNavController().navigateUp()
             }
         }
-        vt.toolbarBack.setOnClickListener{
-                findNavController().navigateUp()
-            }
+
     }
 
     override fun observeData() {

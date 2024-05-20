@@ -23,9 +23,15 @@ class DramaFragment  : BaseFragment<FragmentPlayBinding>() {
         viewModel = ViewModelProvider(this, CulturalEventsViewModelFactory(requireContext())).get(
             CulturalEventsViewModel::class.java)
         viewDataBinding.apply {
-            playToolbar.toolbarTitle.visibility = View.VISIBLE
-            playToolbar.toolbarTitle.text = getString(R.string.drama)
-            playToolbar.toolbarBack.visibility = View.VISIBLE
+            setupToolbar(
+                appLogoVisible = false,
+                leftTitleVisible = false,
+                toolbarTitleVisible = true,
+                toolbarTitleText = getString(R.string.drama),
+                toolbarBackClickListener = View.OnClickListener {
+                    findNavController().navigateUp()
+                }
+            )
 
             val layoutManager = LinearLayoutManager(requireContext())
             playRecyclerView.apply {
@@ -35,9 +41,7 @@ class DramaFragment  : BaseFragment<FragmentPlayBinding>() {
                     findNavController().navigate(action, getNavOptions)
                 }
             }
-            playToolbar.toolbarBack.setOnClickListener{
-                findNavController().navigateUp()
-            }
+
             viewModel.fetchAllCulturalEvents()
         }
     }

@@ -5,17 +5,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <include
-            android:id="@+id/detailToolbar"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            layout="@layout/toolbar_layout"
-            android:layout_width="match_parent"
-            app:layout_constraintBottom_toTopOf="@+id/scrollView"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white" />
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/scrollView"
@@ -24,7 +16,7 @@
             app:layout_constraintBottom_toTopOf="@+id/btOk"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detailToolbar">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/contentCs"
@@ -64,9 +56,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="24dp"
-                    app:layout_constraintBottom_toTopOf="@id/locationBox"
                     android:layout_marginEnd="12dp"
                     android:orientation="horizontal"
+                    app:layout_constraintBottom_toTopOf="@id/locationBox"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/posterImg">
@@ -86,6 +78,7 @@
                         android:textSize="18dp"
                         tools:text="2024-12-07 ~ 2024-12-07" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/locationBox"
                     android:layout_width="0dp"
@@ -116,6 +109,7 @@
                         tools:text="종로구 - 종로 아이들극장" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/ageBox"
                     android:layout_width="0dp"
@@ -177,18 +171,16 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/bookingMark"
-                    android:text="티켓 예매 링크"
-                    android:drawableRight="@drawable/ic_round_right_arrow"
-                    android:drawablePadding="4dp"
-                    android:gravity="center_vertical"
                     android:layout_width="wrap_content"
-                    android:textSize="14dp"
-                    android:layout_marginBottom="4dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="4dp"
+                    android:gravity="center_vertical"
+                    android:text="티켓 예매 링크"
+                    android:textColor="@color/black"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@id/linkBox"
                     app:layout_constraintStart_toStartOf="@id/linkBox"
                     app:layout_constraintTop_toBottomOf="@+id/feeBox" />
@@ -197,8 +189,8 @@
                 <LinearLayout
                     android:id="@+id/linkBox"
                     android:layout_width="0dp"
-                    android:layout_marginBottom="24dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/periodBox"

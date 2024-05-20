@@ -3,22 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     >
-
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:background="@color/white"
         android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/searchToolbar"
-            layout="@layout/toolbar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/guNameSpinner"
             android:layout_width="match_parent"
@@ -31,7 +21,7 @@
             app:layout_constraintBottom_toTopOf="@id/mapView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/searchToolbar"/>
+            app:layout_constraintTop_toTopOf="parent"/>
        <fragment
            android:id="@+id/mapView"
            android:name="com.naver.maps.map.MapFragment"
