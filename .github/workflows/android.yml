@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -23,6 +22,15 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
+    - name: Set environment variables
+      run: |
+        echo "SEOUL_FESTIVAL_API_KEY=${{ secrets.SEOUL_FESTIVAL_API_KEY }}" >> $GITHUB_ENV
+        echo "NAVER_MAPS_API_KEY=${{ secrets.NAVER_MAPS_API_KEY }}" >> $GITHUB_ENV
+        echo "NAVER_CLIENT_ID=${{ secrets.NAVER_CLIENT_ID }}" >> $GITHUB_ENV
+        echo "NAVER_CLIENT_SECRET=${{ secrets.NAVER_CLIENT_SECRET }}" >> $GITHUB_ENV
+
     - name: Build with Gradle
       run: ./gradlew build
 
+    - name: Print Hello World
+      run: echo "Hello World"
