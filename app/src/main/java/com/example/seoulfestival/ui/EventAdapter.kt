@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.seoulfestival.databinding.ItemPlayListBinding
-import com.example.seoulfestival.response.Event
+import com.example.seoulfestival.model.Event
 
 class EventAdapter(
     private val context: Context,

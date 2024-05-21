@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.example.seoulfestival.R
 import com.example.seoulfestival.base.BaseFragment
 import com.example.seoulfestival.databinding.FragmentPlayDetailBinding
-import com.example.seoulfestival.response.Event
+import com.example.seoulfestival.model.Event
 
 class PlayDetailFragment(override val layoutResourceId: Int = R.layout.fragment_play_detail) : BaseFragment<FragmentPlayDetailBinding>() {
     override fun aboutBinding() {
@@ -41,7 +41,6 @@ class PlayDetailFragment(override val layoutResourceId: Int = R.layout.fragment_
             feeTv.text = (event.fee ?: R.string.default_info_text).toString()
             orgLinkTv.text = (event.orgLink ?: R.string.default_info_text).toString()
 
-            // 이미지 로딩
             event.img?.let {
                 Glide.with(requireContext()).load(it).into(posterImg)
             } ?: posterImg.setImageResource(R.drawable.drama)  // 기본 이미지

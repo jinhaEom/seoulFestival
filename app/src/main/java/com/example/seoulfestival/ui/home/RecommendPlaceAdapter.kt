@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.seoulfestival.R
 import com.example.seoulfestival.databinding.ItemRecommandPlaceBinding
-import com.example.seoulfestival.response.Event
+import com.example.seoulfestival.model.Event
 
 class RecommendPlaceAdapter(private val context: Context, private val events: List<Event>) : RecyclerView.Adapter<RecommendPlaceAdapter.ViewHolder>() {
 

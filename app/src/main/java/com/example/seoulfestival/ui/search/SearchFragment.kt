@@ -2,12 +2,13 @@ package com.example.seoulfestival.ui.search
 
 import android.view.View
 import android.widget.AdapterView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.seoulfestival.R
 import com.example.seoulfestival.base.BaseFragment
 import com.example.seoulfestival.databinding.FragmentSearchBinding
-import com.example.seoulfestival.response.Event
+import com.example.seoulfestival.model.Event
 import com.example.seoulfestival.ui.search.adapter.CustomSpinnerAdapter
 import com.example.seoulfestival.ui.search.adapter.FestivalInfoAdapter
 import com.example.seoulfestival.util.AnimationUtils
@@ -25,6 +26,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), OnMapReadyCallback
     private val markers = mutableListOf<Marker>()
     private val eventsByLocation = mutableMapOf<LatLng, MutableList<Event>>()
     private val allEvents = mutableListOf<Event>()
+    private var isFirstLoad = true
 
     override val layoutResourceId: Int = R.layout.fragment_search
 
@@ -77,6 +79,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), OnMapReadyCallback
                 allEvents.addAll(it)
                 groupEventsByLocation(it)
                 displayMarkers()
+                isFirstLoad = false
             }
         })
     }
@@ -129,6 +132,12 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), OnMapReadyCallback
         } else {
             allEvents.filter { it.guname?.contains(guName, ignoreCase = true) == true }
         }
+
+        // 첫 로드가 아닌 경우에만 Toast 메시지 표시
+        if (!isFirstLoad && filteredEvents.isEmpty()) {
+            Toast.makeText(requireContext(), "${guName}에 축제가 없습니다", Toast.LENGTH_SHORT).show()
+        }
+
         groupEventsByLocation(filteredEvents)
         displayMarkers()
     }

@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.seoulfestival.BuildConfig
-import com.example.seoulfestival.response.Event
-import com.example.seoulfestival.response.RetrofitClient
+import com.example.seoulfestival.model.Event
+import com.example.seoulfestival.service.FestivalApi
 import com.example.seoulfestival.service.CulturalEventService
 import kotlinx.coroutines.launch
 
@@ -19,7 +19,7 @@ class CulturalEventsViewModel(private val context: Context) : ViewModel() {
      fun fetchCulturalEvents() {
         viewModelScope.launch {
             try {
-                val service = RetrofitClient.instance.create(CulturalEventService::class.java)
+                val service = FestivalApi.instance.create(CulturalEventService::class.java)
                 val response = service.getCulturalEvents(
                     apiKey = BuildConfig.SEOUL_FESTIVAL_API_KEY,
                     type = "json",
@@ -42,7 +42,7 @@ class CulturalEventsViewModel(private val context: Context) : ViewModel() {
     fun fetchMapsMarkersCulturalEvents() {
         viewModelScope.launch {
             try {
-                val service = RetrofitClient.instance.create(CulturalEventService::class.java)
+                val service = FestivalApi.instance.create(CulturalEventService::class.java)
                 val response = service.getCulturalEvents(
                     apiKey = BuildConfig.SEOUL_FESTIVAL_API_KEY,
                     type = "json",
@@ -67,7 +67,7 @@ class CulturalEventsViewModel(private val context: Context) : ViewModel() {
      fun fetchAllCulturalEvents() {
         viewModelScope.launch {
             try {
-                val service = RetrofitClient.instance.create(CulturalEventService::class.java)
+                val service = FestivalApi.instance.create(CulturalEventService::class.java)
                 val response = service.getCulturalEvents(
                     apiKey = BuildConfig.SEOUL_FESTIVAL_API_KEY,
                     type = "json",

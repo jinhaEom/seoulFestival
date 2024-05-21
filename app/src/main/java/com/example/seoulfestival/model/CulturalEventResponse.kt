@@ -1,4 +1,4 @@
-package com.example.seoulfestival.response
+package com.example.seoulfestival.model
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

@@ -1,7 +1,6 @@
 package com.example.seoulfestival.service
 
-import com.example.seoulfestival.response.CulturalEventInfoResponse
-import retrofit2.Call
+import com.example.seoulfestival.model.CulturalEventInfoResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

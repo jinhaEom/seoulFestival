@@ -11,7 +11,7 @@
         android:title="검색" />
 
     <item
-        android:id="@+id/mypageFragment"
-        android:icon="@drawable/ic_user_white"
-        android:title="마이페이지" />
+        android:id="@+id/newsFragment"
+        android:icon="@drawable/ic_news"
+        android:title="뉴스" />
 </menu>
