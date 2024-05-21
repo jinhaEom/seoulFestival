@@ -2,9 +2,8 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.safeArgs)
-
 }
-apply plugin : 'kotlin-kapt'
+apply plugin: 'kotlin-kapt'
 
 android {
     namespace 'com.example.seoulfestival'
@@ -18,13 +17,25 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        Properties properties = new Properties()
-        properties.load(project.rootProject.file("local.properties").newDataInputStream())
-        buildConfigField "String", "SEOUL_FESTIVAL_API_KEY", "\"${properties.getProperty("SEOUL_FESTIVAL_API_KEY")}\""
-        buildConfigField "String", "NAVER_MAPS_API_KEY", "\"${properties.getProperty("NAVER_MAPS_API_KEY")}\""
-        buildConfigField "String", "NAVER_CLIENT_ID", "\"${properties.getProperty("NAVER_CLIENT_ID")}\""
-        buildConfigField "String", "NAVER_CLIENT_SECRET", "\"${properties.getProperty("NAVER_CLIENT_SECRET")}\""
 
+        // 환경 변수 읽기
+        def localProperties = new Properties()
+        def localPropertiesFile = rootProject.file("local.properties")
+        if (localPropertiesFile.exists()) {
+            localPropertiesFile.withInputStream { stream ->
+                localProperties.load(stream)
+            }
+        }
+
+        def seo_festival_api_key = localProperties.getProperty('SEOUL_FESTIVAL_API_KEY', '')
+        def naver_maps_api_key = localProperties.getProperty('NAVER_MAPS_API_KEY', '')
+        def naver_client_id = localProperties.getProperty('NAVER_CLIENT_ID', '')
+        def naver_client_secret = localProperties.getProperty('NAVER_CLIENT_SECRET', '')
+
+        buildConfigField "String", "SEOUL_FESTIVAL_API_KEY", "\"${seo_festival_api_key}\""
+        buildConfigField "String", "NAVER_MAPS_API_KEY", "\"${naver_maps_api_key}\""
+        buildConfigField "String", "NAVER_CLIENT_ID", "\"${naver_client_id}\""
+        buildConfigField "String", "NAVER_CLIENT_SECRET", "\"${naver_client_secret}\""
     }
     buildFeatures {
         buildConfig true
@@ -51,7 +62,6 @@ android {
 }
 
 dependencies {
-
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat
     implementation libs.material
@@ -89,5 +99,4 @@ dependencies {
     implementation 'com.naver.maps:map-sdk:3.14.0'
     //text에 html 태그 제거
     implementation 'org.jsoup:jsoup:1.14.3'
-
 }
