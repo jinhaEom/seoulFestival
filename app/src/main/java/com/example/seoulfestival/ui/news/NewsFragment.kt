@@ -1,6 +1,7 @@
 package com.example.seoulfestival.ui.news
 
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.seoulfestival.R
@@ -19,6 +20,11 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>() {
     override val layoutResourceId: Int = R.layout.fragment_news
 
     private val newsApi = NaverNewsApi()
+    private val keywords = listOf(
+        "서초문화재단", "롯데콘서트홀", "세종대극장", "세종씨어터",
+        "세종체임버홀", "마포아트센터", "양재 aT센터", "코엑스"
+    )
+
     override fun aboutBinding() {
         setupToolbar(
             appLogoVisible = false,
@@ -65,13 +71,22 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>() {
     }
 
     private fun fetchNews() {
+        activity?.runOnUiThread {
+            viewDataBinding.progressBar.visibility = View.VISIBLE
+        }
+
         thread {
-            val response = newsApi.searchNews("문화행사")
-            response?.let {
-                val newsList = parseNews(it)
-                activity?.runOnUiThread {
-                    setupRecyclerView(newsList)
+            val allNewsList = mutableListOf<NewsItem>()
+            keywords.forEach { keyword ->
+                val response = newsApi.searchNews(keyword)
+                response?.let {
+                    val newsList = parseNews(it)
+                    allNewsList.addAll(newsList)
                 }
+            }
+            activity?.runOnUiThread {
+                viewDataBinding.progressBar.visibility = View.GONE
+                setupRecyclerView(allNewsList)
             }
         }
     }
