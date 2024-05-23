@@ -2,23 +2,20 @@ package com.example.seoulfestival
 
 import android.animation.Animator
 import android.animation.ValueAnimator
-import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Matrix
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.os.Handler
 import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
+import com.example.seoulfestival.choice.ChoiceActivity
 
-@SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,7 +58,6 @@ class SplashActivity : AppCompatActivity() {
         val startTransX = 0f
         val endTransX = -(drawableWidth.toFloat() * scale - screenWidth) / 2
 
-        // 애니메이터 설정
         val animator = ValueAnimator.ofFloat(startTransX, endTransX).apply {
             addUpdateListener { animation ->
                 val transX = animation.animatedValue as Float
@@ -76,7 +72,15 @@ class SplashActivity : AppCompatActivity() {
                 override fun onAnimationStart(animation: Animator) {}
 
                 override fun onAnimationEnd(animation: Animator) {
-                    startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                    val preferences: SharedPreferences = getSharedPreferences("UserPreferences", MODE_PRIVATE)
+                    val firstRun = preferences.getBoolean("firstRun", true)
+
+                    val intent = if (firstRun) {
+                        Intent(this@SplashActivity, ChoiceActivity::class.java)
+                    } else {
+                        Intent(this@SplashActivity, MainActivity::class.java)
+                    }
+                    startActivity(intent)
                     finish()
                 }
 
@@ -87,8 +91,4 @@ class SplashActivity : AppCompatActivity() {
         }
         animator.start()
     }
-
-
 }
-
-

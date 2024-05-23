@@ -5,10 +5,13 @@
     <string name="classic">클래식</string>
     <string name="gukak">국악</string>
     <string name="drama">연극</string>
+
     <string name="recommendPlace">오늘의 추천장소</string>
     <string name="mapSearch">위치검색</string>
     <string name="default_info_text">홈페이지를 참고해주세요</string>
     <string name="information">정보</string>
     <string name="news">뉴스</string>
     <string name="pressRelease">보도자료</string>
+
+    <string name="choice_recommend_tx">평소 즐기는 공연을 선택해주세요!</string>
 </resources>

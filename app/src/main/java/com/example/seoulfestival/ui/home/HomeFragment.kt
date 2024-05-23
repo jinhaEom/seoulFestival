@@ -1,5 +1,8 @@
 package com.example.seoulfestival.ui.home
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -10,6 +13,7 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.seoulfestival.R
 import com.example.seoulfestival.base.BaseFragment
+import com.example.seoulfestival.choice.ChoiceActivity
 import com.example.seoulfestival.databinding.FragmentHomeBinding
 import com.example.seoulfestival.util.getNavOptions
 import com.example.seoulfestival.viewModel.CulturalEventsViewModelFactory
@@ -38,7 +42,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    // 스크롤이 멈췄을 때
                     val visiblePosition = layoutManager.findFirstCompletelyVisibleItemPosition()
                     if (visiblePosition != RecyclerView.NO_POSITION) {
                         val viewHolder = recyclerView.findViewHolderForAdapterPosition(visiblePosition) as? RecommendPlaceAdapter.ViewHolder
@@ -50,6 +53,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         viewModel.fetchCulturalEvents()
         mainMenuClick()
+        setupChangeRecommendClick()
     }
 
     private fun mainMenuClick() {
@@ -67,11 +71,29 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             findNavController().navigate(navDirections, getNavOptions)
         }
     }
-
+    private fun setupChangeRecommendClick() {
+        viewDataBinding.changeRecommendTx.setOnClickListener {
+            val intent = Intent(requireContext(), ChoiceActivity::class.java)
+            startActivity(intent)
+        }
+    }
     override fun observeData() {
         viewModel.events.observe(viewLifecycleOwner, Observer { events ->
             events?.let {
-                adapter = RecommendPlaceAdapter(requireContext(), it)
+                val preferences: SharedPreferences = requireActivity().getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
+                val selectedCategories = mutableSetOf<String>()
+
+                if (preferences.getBoolean("opera", false)) selectedCategories.add("뮤지컬/오페라")
+                if (preferences.getBoolean("dance", false)) selectedCategories.add("무용")
+                if (preferences.getBoolean("classic", false)) selectedCategories.add("클래식")
+                if (preferences.getBoolean("gukak", false)) selectedCategories.add("국악")
+                if (preferences.getBoolean("drama", false)) selectedCategories.add("연극")
+
+                val recommendedEvents = it.filter { event ->
+                    selectedCategories.contains(event.codename)
+                }
+
+                adapter = RecommendPlaceAdapter(requireContext(), recommendedEvents)
                 viewDataBinding.recommendRecyclerView.adapter = adapter
             }
         })
