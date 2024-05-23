@@ -1,3 +1,4 @@
+[![Android CI](https://github.com/jinhaEom/seoulFestival/actions/workflows/android.yml/badge.svg)](https://github.com/jinhaEom/seoulFestival/actions/workflows/android.yml)
 # SeoulFestival 어플
 
 
@@ -8,8 +9,8 @@
 
 - 제작 목적
     -
-    - Rest Api 활용 과 UI 구성 요소 공부 
-        - 여러가지 기능들을 구현해보면서 앱의 기능에 추가할 예정
+    - Rest Api 활용 연습과 UI 구성 요소 공부를 위해 
+    - 여러가지 기능들을 구현해보면서 앱의 기능을 추가할 예정
 
 - 제작 기간
     - 
@@ -48,6 +49,7 @@
     -
     <img src="https://github.com/jinhaEom/seoulFestival/assets/84216838/6c1d1933-5ed0-45b3-a33f-607e9245f602" width="200" height=400/>
     </br>
+    
     - 5가지 메뉴 중 사용자가 선택한 장르의 공연을 '홈화면'에서 추천하여 보여준다.
     - 홈화면의 '추천 공연장르 바꾸기' Text를 누르면 현재 화면으로 다시 돌아와 다른 장르를 선택할 수 있다.
 
