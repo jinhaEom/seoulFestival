@@ -27,13 +27,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun aboutBinding() {
         setupToolbar(
-            appLogoVisible = true,
-            leftTitleVisible = true,
-            toolbarTitleVisible = false,
-            toolbarTitleText = getString(R.string.app_name),
-            appLogoClickListener = {
-                viewDataBinding.homeScrollView.smoothScrollTo(0, 0)
-            }
+            true, true, false, getString(R.string.app_name),
+            appLogoClickListener = { viewDataBinding.homeScrollView.smoothScrollTo(0, 0) }
         )
 
         viewModel = ViewModelProvider(this, CulturalEventsViewModelFactory(requireContext())).get(CulturalEventsViewModel::class.java)
