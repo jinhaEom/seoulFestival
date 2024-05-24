@@ -27,12 +27,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun aboutBinding() {
         setupToolbar(
-            true, true, false, getString(R.string.app_name),
-            appLogoClickListener = { viewDataBinding.homeScrollView.smoothScrollTo(0, 0) }
+            appLogoVisible = true,
+            leftTitleVisible = true,
+            toolbarTitleVisible = false,
+            toolbarTitleText = getString(R.string.app_name),
+            appLogoClickListener = {
+                viewDataBinding.homeScrollView.smoothScrollTo(0, 0)
+            }
         )
+
         viewModel = ViewModelProvider(this, CulturalEventsViewModelFactory(requireContext())).get(CulturalEventsViewModel::class.java)
         layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        val recyclerView = viewDataBinding.root.findViewById<RecyclerView>(R.id.recommendRecyclerView)
+        val recyclerView = viewDataBinding.recommendRecyclerView
         recyclerView.layoutManager = layoutManager
 
         val snapHelper = PagerSnapHelper()
@@ -46,12 +52,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     if (visiblePosition != RecyclerView.NO_POSITION) {
                         val viewHolder = recyclerView.findViewHolderForAdapterPosition(visiblePosition) as? RecommendPlaceAdapter.ViewHolder
                         viewHolder?.showIndex()
+                        viewModel.selectedEventIndex = visiblePosition
                     }
                 }
             }
         })
 
-        viewModel.fetchCulturalEvents()
+        if (viewModel.events.value == null) {
+            viewModel.fetchCulturalEvents()
+        }
+        viewDataBinding.swipeRefreshLayout.setOnRefreshListener {
+            viewModel.fetchCulturalEvents()
+        }
+
+        viewModel.events.observe(viewLifecycleOwner, Observer {
+            viewDataBinding.swipeRefreshLayout.isRefreshing = false
+        })
         mainMenuClick()
         setupChangeRecommendClick()
     }
@@ -71,12 +87,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             findNavController().navigate(navDirections, getNavOptions)
         }
     }
+
     private fun setupChangeRecommendClick() {
         viewDataBinding.changeRecommendTx.setOnClickListener {
             val intent = Intent(requireContext(), ChoiceActivity::class.java)
             startActivity(intent)
         }
     }
+
     override fun observeData() {
         viewModel.events.observe(viewLifecycleOwner, Observer { events ->
             events?.let {
@@ -95,6 +113,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
                 adapter = RecommendPlaceAdapter(requireContext(), recommendedEvents)
                 viewDataBinding.recommendRecyclerView.adapter = adapter
+
+                viewModel.selectedEventIndex?.let { index ->
+                    viewDataBinding.recommendRecyclerView.scrollToPosition(index)
+                }
             }
         })
     }

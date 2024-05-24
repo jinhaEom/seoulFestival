@@ -15,6 +15,7 @@ import kotlinx.coroutines.launch
 class CulturalEventsViewModel(private val context: Context) : ViewModel() {
     private val _events = MutableLiveData<List<Event>?>()
     val events: LiveData<List<Event>?> = _events
+    var selectedEventIndex: Int? = null
 
     private val preferences: SharedPreferences = context.getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
 

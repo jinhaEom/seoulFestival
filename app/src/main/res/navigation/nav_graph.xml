@@ -10,6 +10,13 @@
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
+            android:id="@+id/actionPlayDetailFragment"
+            app:destination="@id/playDetailFragment">
+            <argument
+                android:name="event"
+                app:argType="com.example.seoulfestival.model.Event"/>
+        </action>
+        <action
             android:id="@+id/actionOperaFragment"
             app:destination="@+id/operaFragment" />
         <action

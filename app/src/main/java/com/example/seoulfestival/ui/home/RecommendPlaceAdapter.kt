@@ -1,8 +1,6 @@
 package com.example.seoulfestival.ui.home
 
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
@@ -10,11 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.seoulfestival.R
 import com.example.seoulfestival.databinding.ItemRecommandPlaceBinding
 import com.example.seoulfestival.model.Event
+import com.example.seoulfestival.ui.home.HomeFragmentDirections
 
 class RecommendPlaceAdapter(private val context: Context, private val events: List<Event>) : RecyclerView.Adapter<RecommendPlaceAdapter.ViewHolder>() {
 
@@ -40,11 +40,8 @@ class RecommendPlaceAdapter(private val context: Context, private val events: Li
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     val event = events[position]
-                    val url = event.addr
-                    if (url != null && url.isNotEmpty()) {
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-                        context.startActivity(intent)
-                    }
+                    val action = HomeFragmentDirections.actionPlayDetailFragment(event)
+                    binding.root.findNavController().navigate(action)
                 }
             }
         }
@@ -77,6 +74,7 @@ class RecommendPlaceAdapter(private val context: Context, private val events: Li
             handler.removeCallbacks(hideRunnable)
         }
     }
+
     override fun onViewRecycled(holder: ViewHolder) {
         super.onViewRecycled(holder)
         holder.clear()
