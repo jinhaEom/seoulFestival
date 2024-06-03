@@ -102,7 +102,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), OnMapReadyCallback
             val marker = Marker()
             marker.position = location
             marker.map = naverMap
-            marker.captionText = if (eventList.size > 1) "${eventList.first().title} 외" else eventList.first().title ?: "No title"
+            marker.captionText = "${eventList.size}"
             markers.add(marker)
 
             viewDataBinding.apply {
@@ -120,6 +120,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>(), OnMapReadyCallback
             }
         }
     }
+
 
     private fun clearMarkers() {
         markers.forEach { it.map = null }
